@@ -1,0 +1,77 @@
+{
+  "name": "koa-yup-router",
+  "version": "1.0.0",
+  "description": "Configurable, input validated routing for koa using yup",
+  "keywords": [
+    "yup",
+    "koa",
+    "router",
+    "validate",
+    "validator",
+    "validation"
+  ],
+  "scripts": {
+    "build": "tsc --build --verbose tsconfig.json",
+    "lint": "eslint .",
+    "lint-fix": "eslint --fix .",
+    "test": "echo 'No tests yet' && exit 1"
+  },
+  "engines": {
+    "node": ">= 8"
+  },
+  "author": "Krzysztof Rudowski",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rudi23/koa-yup-router.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rudi23/koa-yup-router/issues"
+  },
+  "homepage": "https://github.com/rudi23/koa-yup-router",
+  "files": [
+    "lib/**/*"
+  ],
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "lint-staged": {
+    "*.{js,ts}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md}": "prettier --write"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run test"
+    }
+  },
+  "dependencies": {
+    "@koa/router": "10.0.0",
+    "await-busboy": "^1.0.3",
+    "clone": "^2.1.2",
+    "co-body": "^6.1.0",
+    "delegates": "^1.0.0",
+    "yup": "^0.32.9"
+  },
+  "devDependencies": {
+    "@types/busboy": "^0.2.3",
+    "@types/clone": "^2.1.0",
+    "@types/co-body": "^5.1.0",
+    "@types/koa__router": "^8.0.4",
+    "@types/koa-bodyparser": "^4.3.0",
+    "@typescript-eslint/eslint-plugin": "^4.19.0",
+    "@typescript-eslint/parser": "^4.19.0",
+    "eslint": "^7.23.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.3.1",
+    "husky": "^4.3.8",
+    "koa": "^2.13.1",
+    "prettier": "^2.2.1",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.3"
+  }
+}
