@@ -41,10 +41,7 @@ export default function createParseBody<
 
     const parseBody = resolveBodyParser(spec.validate.type, spec.validate);
 
-    return async function parseBodyWithErrorHandler(
-        ctx: Koa.Context,
-        next: Koa.Next,
-    ): Promise<void> {
+    return async function parseBodyWithErrorHandler(ctx: Koa.Context, next: Koa.Next): Promise<void> {
         try {
             await parseBody(ctx, next);
         } catch (err) {

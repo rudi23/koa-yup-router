@@ -63,7 +63,7 @@ describe('middleware/parseBody/parseJsonBody', () => {
                     body: { res: 'parsed body' },
                 },
             },
-            { limit: 5, strict: true },
+            { limit: 5, strict: true }
         );
     });
 
@@ -83,7 +83,7 @@ describe('middleware/parseBody/parseJsonBody', () => {
                     body: { res: 'parsed body' },
                 },
             },
-            {},
+            {}
         );
     });
 });

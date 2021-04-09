@@ -19,7 +19,7 @@ describe('utils/validateSpecification/validateValidator', () => {
         expect(() =>
             validateValidator({
                 type: ('invalid' as unknown) as ValidateConfig['type'],
-            }),
+            })
         ).toThrow('validate.type must be either json, form, multipart or stream');
     });
 
@@ -27,7 +27,7 @@ describe('utils/validateSpecification/validateValidator', () => {
         expect(() =>
             validateValidator({
                 body: ({} as unknown) as yup.ObjectSchema<any>,
-            }),
+            })
         ).toThrow('validate.body must be instance of yup.object');
     });
 
@@ -35,7 +35,7 @@ describe('utils/validateSpecification/validateValidator', () => {
         expect(() =>
             validateValidator({
                 params: ({} as unknown) as yup.ObjectSchema<any>,
-            }),
+            })
         ).toThrow('validate.params must be instance of yup.object');
     });
 
@@ -43,7 +43,7 @@ describe('utils/validateSpecification/validateValidator', () => {
         expect(() =>
             validateValidator({
                 query: ({} as unknown) as yup.ObjectSchema<any>,
-            }),
+            })
         ).toThrow('validate.query must be instance of yup.object');
     });
 
@@ -51,7 +51,7 @@ describe('utils/validateSpecification/validateValidator', () => {
         expect(() =>
             validateValidator({
                 headers: ({} as unknown) as yup.ObjectSchema<any>,
-            }),
+            })
         ).toThrow('validate.headers must be instance of yup.object');
     });
 
@@ -59,7 +59,7 @@ describe('utils/validateSpecification/validateValidator', () => {
         expect(() =>
             validateValidator({
                 body: yup.object({}),
-            }),
+            })
         ).toThrow('validate.type must be declared when using validate.body');
     });
 
@@ -68,7 +68,7 @@ describe('utils/validateSpecification/validateValidator', () => {
             validateValidator({
                 body: yup.object({}),
                 type: 'stream',
-            }),
+            })
         ).toThrow('validate.type must either json or form when using validate.body');
     });
 

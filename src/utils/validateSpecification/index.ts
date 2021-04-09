@@ -17,9 +17,7 @@ export default function validateSpecification<
     QueryT = DefaultQuery,
     BodyT = DefaultBody,
     HeadersT = DefaultHeaders
->(
-    spec: RouteConfig<ParamsT, QueryT, BodyT, HeadersT>,
-): RouteSpecification<ParamsT, QueryT, BodyT, HeadersT> {
+>(spec: RouteConfig<ParamsT, QueryT, BodyT, HeadersT>): RouteSpecification<ParamsT, QueryT, BodyT, HeadersT> {
     if (!spec) {
         throw new Error('Missing route specification');
     }

@@ -90,22 +90,10 @@ describe('middleware/validate', () => {
                 body: { body1: 'string', body2: 4 },
             },
         });
-        expect(mockParamsSchema.validateSync).toHaveBeenCalledWith(
-            { param1: 'string', param2: 1 },
-            calledOptions,
-        );
-        expect(mockQuerySchema.validateSync).toHaveBeenCalledWith(
-            { query1: 'string', query2: 2 },
-            calledOptions,
-        );
-        expect(mockHeadersSchema.validateSync).toHaveBeenCalledWith(
-            { header1: 'string', header2: 3 },
-            calledOptions,
-        );
-        expect(mockBodySchema.validateSync).toHaveBeenCalledWith(
-            { body1: 'string', body2: 4 },
-            calledOptions,
-        );
+        expect(mockParamsSchema.validateSync).toHaveBeenCalledWith({ param1: 'string', param2: 1 }, calledOptions);
+        expect(mockQuerySchema.validateSync).toHaveBeenCalledWith({ query1: 'string', query2: 2 }, calledOptions);
+        expect(mockHeadersSchema.validateSync).toHaveBeenCalledWith({ header1: 'string', header2: 3 }, calledOptions);
+        expect(mockBodySchema.validateSync).toHaveBeenCalledWith({ body1: 'string', body2: 4 }, calledOptions);
         expect(next).toHaveBeenCalled();
     });
 
@@ -134,10 +122,7 @@ describe('middleware/validate', () => {
                 headers: { header1: 'string', header2: '3' },
             },
         });
-        expect(mockQuerySchema.validateSync).toHaveBeenCalledWith(
-            { query1: 'string', query2: 2 },
-            calledOptions,
-        );
+        expect(mockQuerySchema.validateSync).toHaveBeenCalledWith({ query1: 'string', query2: 2 }, calledOptions);
         expect(next).toHaveBeenCalled();
     });
 
@@ -166,7 +151,7 @@ describe('middleware/validate', () => {
                 },
             },
             'query',
-            new Error('Invalid data'),
+            new Error('Invalid data')
         );
     });
 
@@ -193,7 +178,7 @@ describe('middleware/validate', () => {
                 },
             },
             'invalid',
-            new Error('Unknown input part'),
+            new Error('Unknown input part')
         );
     });
 });

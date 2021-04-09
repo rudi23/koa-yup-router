@@ -11,11 +11,7 @@ import type {
     ValidationType,
 } from '../@types';
 
-function updateRequestWithCastedValues(
-    ctx: Koa.Context,
-    inputPart: ValidationType,
-    validationResult: any,
-) {
+function updateRequestWithCastedValues(ctx: Koa.Context, inputPart: ValidationType, validationResult: any) {
     switch (inputPart) {
         case 'headers':
         case 'query':
@@ -41,11 +37,7 @@ function updateRequestWithCastedValues(
     }
 }
 
-function validateInput(
-    ctx: Koa.Context,
-    inputPart: ValidationType,
-    schema: ObjectSchema<any>,
-): void {
+function validateInput(ctx: Koa.Context, inputPart: ValidationType, schema: ObjectSchema<any>): void {
     const data = inputPart === 'params' ? ctx.params : ctx.request[inputPart];
 
     const validationResult = schema.validateSync(data, {

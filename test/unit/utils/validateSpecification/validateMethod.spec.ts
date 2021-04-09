@@ -2,15 +2,11 @@ import validateMethod from '@src/utils/validateSpecification/validateMethod';
 
 describe('utils/validateSpecification/validateMethod', () => {
     it('throws error when method is not defined', () => {
-        expect(() => validateMethod((undefined as unknown) as string)).toThrow(
-            'Missing route methods',
-        );
+        expect(() => validateMethod((undefined as unknown) as string)).toThrow('Missing route methods');
     });
 
     it('throws error when method is not string or array', () => {
-        expect(() => validateMethod((1 as unknown) as string)).toThrow(
-            'Route methods must be an array or string',
-        );
+        expect(() => validateMethod((1 as unknown) as string)).toThrow('Route methods must be an array or string');
     });
 
     it('splits if method is defining multiple methods', () => {

@@ -4,7 +4,7 @@ import isHandlerSupportedFunction from '@src/utils/validateSpecification/isHandl
 jest.mock('@src/utils/validateSpecification/isHandlerSupportedFunction');
 
 const mockIsHandlerSupportedFunction = (isHandlerSupportedFunction as jest.Mock).mockImplementation(
-    (arg: unknown) => arg,
+    (arg: unknown) => arg
 );
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 const fn = () => {};

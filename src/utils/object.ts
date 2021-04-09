@@ -14,6 +14,6 @@ export function filterObject(obj: Record<string, any>, keys: string[]): Record<s
                 ...res,
                 [key]: obj[key],
             }),
-            {},
+            {}
         );
 }

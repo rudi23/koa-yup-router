@@ -53,12 +53,9 @@ class YupRouter<StateT = any, CustomT = Record<string, any>> extends KoaRouter {
             .method('param');
     }
 
-    addRoute<
-        ParamsT = DefaultParams,
-        QueryT = DefaultQuery,
-        BodyT = DefaultBody,
-        HeadersT = DefaultHeaders
-    >(config: RouteConfig<ParamsT, QueryT, BodyT, HeadersT>): YupRouter {
+    addRoute<ParamsT = DefaultParams, QueryT = DefaultQuery, BodyT = DefaultBody, HeadersT = DefaultHeaders>(
+        config: RouteConfig<ParamsT, QueryT, BodyT, HeadersT>
+    ): YupRouter {
         this.registerRoute(config);
 
         return this;

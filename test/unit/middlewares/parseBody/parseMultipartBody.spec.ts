@@ -16,9 +16,7 @@ describe('middleware/parseBody/parseMultipartBody', () => {
             },
         });
 
-        await expect(createParseMultipartBody({})(context, next)).rejects.toThrow(
-            'Multipart body expected',
-        );
+        await expect(createParseMultipartBody({})(context, next)).rejects.toThrow('Multipart body expected');
     });
 
     it('should parse multipart body and not call next()', async () => {
@@ -49,7 +47,7 @@ describe('middleware/parseBody/parseMultipartBody', () => {
                     ...context.request,
                 },
             },
-            { autoFields: true, highWaterMark: 10, preservePath: true },
+            { autoFields: true, highWaterMark: 10, preservePath: true }
         );
     });
 
@@ -68,7 +66,7 @@ describe('middleware/parseBody/parseMultipartBody', () => {
                     ...context.request,
                 },
             },
-            { autoFields: true },
+            { autoFields: true }
         );
     });
 });

@@ -1,12 +1,6 @@
 import clone from 'clone';
 import type Koa from 'koa';
-import type {
-    DefaultBody,
-    DefaultHeaders,
-    DefaultParams,
-    DefaultQuery,
-    RouteSpecification,
-} from '../@types';
+import type { DefaultBody, DefaultHeaders, DefaultParams, DefaultQuery, RouteSpecification } from '../@types';
 
 export default function createExposeSpecification<
     ParamsT = DefaultParams,

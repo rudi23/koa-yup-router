@@ -114,11 +114,7 @@ describe('middleware/parseBody', () => {
 
         await createParseBody(spec)(context, next);
 
-        expect(mockCaptureError).toHaveBeenCalledWith(
-            {},
-            'type',
-            new yup.ValidationError('json body parser error'),
-        );
+        expect(mockCaptureError).toHaveBeenCalledWith({}, 'type', new yup.ValidationError('json body parser error'));
         expect(next).toHaveBeenCalled();
     });
 });

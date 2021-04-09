@@ -18,9 +18,7 @@ describe('middleware/parseBody/parseFormBody', () => {
             },
         });
 
-        await expect(createParseFormBody({})(context, next)).rejects.toThrow(
-            'x-www-form-urlencoded body expected',
-        );
+        await expect(createParseFormBody({})(context, next)).rejects.toThrow('x-www-form-urlencoded body expected');
     });
 
     it('should not parse body if ctx.request.body already exists', async () => {
@@ -65,7 +63,7 @@ describe('middleware/parseBody/parseFormBody', () => {
                     body: 'parsed body',
                 },
             },
-            { limit: 5, strict: true },
+            { limit: 5, strict: true }
         );
     });
 
@@ -85,7 +83,7 @@ describe('middleware/parseBody/parseFormBody', () => {
                     body: 'parsed body',
                 },
             },
-            {},
+            {}
         );
     });
 });

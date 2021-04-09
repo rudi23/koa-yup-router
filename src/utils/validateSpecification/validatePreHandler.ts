@@ -1,11 +1,4 @@
-import type {
-    DefaultBody,
-    DefaultHeaders,
-    DefaultParams,
-    DefaultQuery,
-    Handler,
-    RouteConfig,
-} from '../../@types';
+import type { DefaultBody, DefaultHeaders, DefaultParams, DefaultQuery, Handler, RouteConfig } from '../../@types';
 import isHandlerSupportedFunction from './isHandlerSupportedFunction';
 
 export default function validatePreHandler<
@@ -14,7 +7,7 @@ export default function validatePreHandler<
     BodyT = DefaultBody,
     HeadersT = DefaultHeaders
 >(
-    preHandler: RouteConfig<ParamsT, QueryT, BodyT, HeadersT>['preHandler'],
+    preHandler: RouteConfig<ParamsT, QueryT, BodyT, HeadersT>['preHandler']
 ): Handler<ParamsT, QueryT, BodyT, HeadersT>[] {
     if (!preHandler) {
         return [];

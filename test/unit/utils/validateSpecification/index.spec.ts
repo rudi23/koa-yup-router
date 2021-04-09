@@ -13,21 +13,11 @@ jest.mock('@src/utils/validateSpecification/validateMethod');
 jest.mock('@src/utils/validateSpecification/validateRoutePath');
 jest.mock('@src/utils/validateSpecification/validateValidator');
 
-const mockValidateHandler = (validateHandler as jest.Mock).mockImplementation((arg: unknown) => [
-    arg,
-]);
-const mockValidatePreHandler = (validatePreHandler as jest.Mock).mockImplementation(
-    (arg: unknown) => [arg],
-);
-const mockValidateMethod = (validateMethod as jest.Mock).mockImplementation((arg: unknown) => [
-    arg,
-]);
-const mockValidateRoutePath = (validateRoutePath as jest.Mock).mockImplementation(
-    (arg: unknown) => arg,
-);
-const mockValidateValidator = (validateValidator as jest.Mock).mockImplementation(
-    (arg: unknown) => arg,
-);
+const mockValidateHandler = (validateHandler as jest.Mock).mockImplementation((arg: unknown) => [arg]);
+const mockValidatePreHandler = (validatePreHandler as jest.Mock).mockImplementation((arg: unknown) => [arg]);
+const mockValidateMethod = (validateMethod as jest.Mock).mockImplementation((arg: unknown) => [arg]);
+const mockValidateRoutePath = (validateRoutePath as jest.Mock).mockImplementation((arg: unknown) => arg);
+const mockValidateValidator = (validateValidator as jest.Mock).mockImplementation((arg: unknown) => arg);
 
 describe('utils/validateSpecification', () => {
     it('throws error when config is not provided', () => {

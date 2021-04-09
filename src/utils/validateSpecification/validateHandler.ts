@@ -1,11 +1,4 @@
-import type {
-    DefaultBody,
-    DefaultHeaders,
-    DefaultParams,
-    DefaultQuery,
-    Handler,
-    RouteConfig,
-} from '../../@types';
+import type { DefaultBody, DefaultHeaders, DefaultParams, DefaultQuery, Handler, RouteConfig } from '../../@types';
 import isHandlerSupportedFunction from './isHandlerSupportedFunction';
 
 export default function validateHandler<
@@ -13,9 +6,7 @@ export default function validateHandler<
     QueryT = DefaultQuery,
     BodyT = DefaultBody,
     HeadersT = DefaultHeaders
->(
-    handler: RouteConfig<ParamsT, QueryT, BodyT, HeadersT>['handler'],
-): Handler<ParamsT, QueryT, BodyT, HeadersT>[] {
+>(handler: RouteConfig<ParamsT, QueryT, BodyT, HeadersT>['handler']): Handler<ParamsT, QueryT, BodyT, HeadersT>[] {
     if (!handler) {
         throw new Error('Missing route handlers');
     }

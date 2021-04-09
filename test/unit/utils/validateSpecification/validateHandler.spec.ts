@@ -6,16 +6,14 @@ import type { Handler } from '@src/@types';
 jest.mock('@src/utils/validateSpecification/isHandlerSupportedFunction');
 
 const mockIsHandlerSupportedFunction = (isHandlerSupportedFunction as jest.Mock).mockImplementation(
-    (arg: unknown) => arg,
+    (arg: unknown) => arg
 );
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 const fn = () => {};
 
 describe('utils/validateSpecification/validateHandler', () => {
     it('throws error when config.handlers is not defined', () => {
-        expect(() => validateHandler((undefined as unknown) as Handler)).toThrow(
-            'Missing route handlers',
-        );
+        expect(() => validateHandler((undefined as unknown) as Handler)).toThrow('Missing route handlers');
     });
 
     it('checks if handler is supported function', () => {
