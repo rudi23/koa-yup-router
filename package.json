@@ -37,10 +37,7 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "lint-staged": {
-    "*.{js,ts}": [
-      "eslint --fix",
-      "prettier --write"
-    ],
+    "*.{js,ts}": "eslint --fix",
     "*.{json,md}": "prettier --write"
   },
   "husky": {
