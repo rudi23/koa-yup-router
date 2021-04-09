@@ -1,32 +1,40 @@
 import type Koa from 'koa';
-import type * as Yup from 'yup';
+import type { ObjectSchema } from 'yup';
 import captureError from '../utils/captureError';
+import { inputParts } from '../@types/constants';
 import type {
     DefaultBody,
     DefaultHeaders,
     DefaultParams,
     DefaultQuery,
     RouteSpecification,
-    ValidateConfig,
     ValidationType,
 } from '../@types';
 
-const inputParts: ValidationType[] = ['headers', 'query', 'params', 'body'];
-
-function updateRequest(ctx: Koa.Context, inputPart: ValidationType, validationResult: any) {
-    // update our request with the casted values
+function updateRequestWithCastedValues(
+    ctx: Koa.Context,
+    inputPart: ValidationType,
+    validationResult: any,
+) {
     switch (inputPart) {
-        case 'headers': // request.header is getter only, cannot set it
-        case 'query': // setting request.query directly causes casting back to strings
+        case 'headers':
+        case 'query':
+            // setting ctx.request.header, ctx.request.query directly causes casting back to strings
             Object.keys(validationResult).forEach((key) => {
                 ctx.request[inputPart][key] = validationResult[key];
             });
             break;
         case 'params':
-            ctx.params = validationResult;
+            // setting ctx.params directly causes casting back to strings
+            Object.keys(validationResult).forEach((key) => {
+                ctx.params[key] = validationResult[key];
+            });
             break;
         case 'body':
-            ctx.request.body = validationResult;
+            // setting ctx.request.body directly causes casting back to strings
+            Object.keys(validationResult).forEach((key) => {
+                (ctx.request.body as any)[key] = validationResult[key];
+            });
             break;
         default:
             throw new Error('Unknown input part');
@@ -36,13 +44,8 @@ function updateRequest(ctx: Koa.Context, inputPart: ValidationType, validationRe
 function validateInput(
     ctx: Koa.Context,
     inputPart: ValidationType,
-    validateSpec: ValidateConfig
-): Yup.ValidationError | undefined {
-    const schema = validateSpec[inputPart];
-    if (!schema) {
-        return undefined;
-    }
-
+    schema: ObjectSchema<any>,
+): void {
     const data = inputPart === 'params' ? ctx.params : ctx.request[inputPart];
 
     const validationResult = schema.validateSync(data, {
@@ -52,9 +55,7 @@ function validateInput(
         stripUnknown: false,
     });
 
-    updateRequest(ctx, inputPart, validationResult);
-
-    return undefined;
+    updateRequestWithCastedValues(ctx, inputPart, validationResult);
 }
 
 export default function createValidate<
@@ -65,12 +66,13 @@ export default function createValidate<
 >(spec: RouteSpecification<ParamsT, QueryT, BodyT, HeadersT>): Koa.Middleware {
     return async function validate(ctx: Koa.Context, next: Koa.Next): Promise<void> {
         inputParts.forEach((inputPart) => {
-            if (!spec?.validate) {
+            const schema = spec.validate?.[inputPart];
+            if (schema === undefined) {
                 return;
             }
 
             try {
-                validateInput(ctx, inputPart, spec.validate);
+                validateInput(ctx, inputPart, schema);
             } catch (err) {
                 captureError(ctx, inputPart, err);
             }

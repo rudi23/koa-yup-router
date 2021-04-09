@@ -8,12 +8,12 @@ import type {
     InputType,
     RouteSpecification,
     ValidateConfig,
-} from '../@types';
-import captureError from '../utils/captureError';
-import parseFormBody from './parseBody/parseFormBody';
-import parseMultipartBody from './parseBody/parseMultipartBody';
-import parseJsonBody from './parseBody/parseJsonBody';
-import emptyMiddleware from './emptyMiddleware';
+} from '../../@types';
+import captureError from '../../utils/captureError';
+import emptyMiddleware from '../emptyMiddleware';
+import parseFormBody from './parseFormBody';
+import parseMultipartBody from './parseMultipartBody';
+import parseJsonBody from './parseJsonBody';
 
 function resolveBodyParser(type: InputType, validateSpec: ValidateConfig) {
     switch (type) {
@@ -35,13 +35,16 @@ export default function createParseBody<
     BodyT = DefaultBody,
     HeadersT = DefaultHeaders
 >(spec: RouteSpecification<ParamsT, QueryT, BodyT, HeadersT>): Koa.Middleware {
-    if (!spec?.validate?.type) {
+    if (!spec.validate?.type) {
         return emptyMiddleware;
     }
 
     const parseBody = resolveBodyParser(spec.validate.type, spec.validate);
 
-    return async function parseBodyWithErrorHandler(ctx: Koa.Context, next: Koa.Next): Promise<void> {
+    return async function parseBodyWithErrorHandler(
+        ctx: Koa.Context,
+        next: Koa.Next,
+    ): Promise<void> {
         try {
             await parseBody(ctx, next);
         } catch (err) {

@@ -4,7 +4,7 @@
 import type { ParsedUrlQuery } from 'querystring';
 import type { IncomingHttpHeaders } from 'http';
 import type CoBody from 'co-body';
-import type * as Busboy from 'busboy';
+import type Busboy from 'busboy';
 import type * as Koa from 'koa';
 import type * as Yup from 'yup';
 import type * as KoaRouter from '@koa/router';
@@ -25,16 +25,22 @@ type NestedHandler<
     HeadersT = DefaultHeaders
 > = ReadonlyArray<Handler<ParamsT, QueryT, BodyT, HeadersT>>;
 
-interface RouterParameterizedContext<ParamsT = DefaultParams, StateT = Koa.DefaultState, ContextT = Record<string, any>>
-    extends Koa.Context {
+interface RouterParameterizedContext<
+    ParamsT = DefaultParams,
+    StateT = Koa.DefaultState,
+    ContextT = Record<string, any>
+> extends Koa.Context {
     params: ParamsT;
     router: YupRouter<StateT, ContextT>;
     _matchedRoute: string | RegExp | undefined;
     _matchedRouteName: string | undefined;
 }
 
-interface RequestWithBody<BodyT = DefaultBody, QueryT = ParsedUrlQuery, HeadersT = IncomingHttpHeaders>
-    extends Koa.Request<QueryT, HeadersT> {
+interface RequestWithBody<
+    BodyT = DefaultBody,
+    QueryT = ParsedUrlQuery,
+    HeadersT = IncomingHttpHeaders
+> extends Koa.Request<QueryT, HeadersT> {
     body: BodyT;
 }
 
@@ -43,7 +49,12 @@ export type DefaultQuery = Record<string, any>;
 export type DefaultBody = unknown;
 export type DefaultHeaders = Record<string, any>;
 
-export type Handler<ParamsT = DefaultParams, QueryT = DefaultQuery, BodyT = DefaultBody, HeadersT = DefaultHeaders> =
+export type Handler<
+    ParamsT = DefaultParams,
+    QueryT = DefaultQuery,
+    BodyT = DefaultBody,
+    HeadersT = DefaultHeaders
+> =
     | RouterMiddleware<ParamsT, QueryT, BodyT, HeadersT>
     | NestedHandler<ParamsT, QueryT, BodyT, HeadersT>;
 
@@ -86,13 +97,17 @@ export interface RouteConfig<
     BodyT = DefaultBody,
     HeadersT = DefaultHeaders
 > {
-    preHandler?: Handler<ParamsT, QueryT, BodyT, HeadersT> | Handler<ParamsT, QueryT, BodyT, HeadersT>[];
+    preHandler?:
+        | Handler<ParamsT, QueryT, BodyT, HeadersT>
+        | Handler<ParamsT, QueryT, BodyT, HeadersT>[];
     validate?: ValidateConfig;
     meta?: any;
     name?: string;
     method: string | string[];
     path: string | RegExp;
-    handler: Handler<ParamsT, QueryT, BodyT, HeadersT> | Handler<ParamsT, QueryT, BodyT, HeadersT>[];
+    handler:
+        | Handler<ParamsT, QueryT, BodyT, HeadersT>
+        | Handler<ParamsT, QueryT, BodyT, HeadersT>[];
 }
 
 export interface RouteSpecification<
@@ -101,13 +116,13 @@ export interface RouteSpecification<
     BodyT = DefaultBody,
     HeadersT = DefaultHeaders
 > {
-    preHandler: Handler<ParamsT, QueryT, BodyT, HeadersT>[];
+    preHandlers: Handler<ParamsT, QueryT, BodyT, HeadersT>[];
     validate?: ValidateConfig;
     meta?: any;
     name?: string;
-    method: string[];
+    methods: string[];
     path: string | RegExp;
-    handler: Handler<ParamsT, QueryT, BodyT, HeadersT>[];
+    handlers: Handler<ParamsT, QueryT, BodyT, HeadersT>[];
 }
 
 export type RouterContext<

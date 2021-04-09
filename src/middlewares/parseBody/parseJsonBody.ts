@@ -1,4 +1,4 @@
-import parse from 'co-body';
+import { json } from 'co-body';
 import type Koa from 'koa';
 import type { JsonBodyOptions } from '../../@types';
 
@@ -7,6 +7,6 @@ export default function createParseJsonBody(options: JsonBodyOptions = {}): Koa.
         if (!ctx.request.is('json')) {
             throw new Error('JSON body expected');
         }
-        ctx.request.body = ctx.request.body || (await parse.json(ctx, options));
+        ctx.request.body = ctx.request.body || (await json(ctx, options));
     };
 }

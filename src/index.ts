@@ -15,6 +15,7 @@ import type {
     RouteSpecification,
     RouterOptions,
 } from './@types';
+import validatePreHandler from '@src/utils/validateSpecification/validatePreHandler';
 
 class YupRouter<StateT = any, CustomT = Record<string, any>> extends KoaRouter {
     routeSpecs: RouteSpecification<any, any, any, any>[] = [];
@@ -34,7 +35,7 @@ class YupRouter<StateT = any, CustomT = Record<string, any>> extends KoaRouter {
         const { errorHandler: customErrorHandler, preHandler, ...baseOptions } = options ?? {};
 
         this.errorHandler = customErrorHandler || errorHandler;
-        this.preHandlers = preHandler ? [preHandler].flat(Infinity) : [];
+        this.preHandlers = validatePreHandler(preHandler);
         this.routeSpecs = [];
         this.router = new KoaRouter(baseOptions);
 
@@ -52,9 +53,12 @@ class YupRouter<StateT = any, CustomT = Record<string, any>> extends KoaRouter {
             .method('param');
     }
 
-    addRoute<ParamsT = DefaultParams, QueryT = DefaultQuery, BodyT = DefaultBody, HeadersT = DefaultHeaders>(
-        config: RouteConfig<ParamsT, QueryT, BodyT, HeadersT>
-    ): YupRouter {
+    addRoute<
+        ParamsT = DefaultParams,
+        QueryT = DefaultQuery,
+        BodyT = DefaultBody,
+        HeadersT = DefaultHeaders
+    >(config: RouteConfig<ParamsT, QueryT, BodyT, HeadersT>): YupRouter {
         this.registerRoute(config);
 
         return this;
@@ -71,9 +75,9 @@ class YupRouter<StateT = any, CustomT = Record<string, any>> extends KoaRouter {
         this.routeSpecs.push(spec);
 
         const { name, path } = spec;
-        const methods = [spec.method].flat();
-        const preHandlers = spec.preHandler ? [spec.preHandler].flat(Infinity) : [];
-        const handlers = spec.handler ? [spec.handler].flat(Infinity) : [];
+        const methods = [spec.methods].flat();
+        const preHandlers = spec.preHandlers ? [spec.preHandlers].flat(Infinity) : [];
+        const handlers = spec.handlers ? [spec.handlers].flat(Infinity) : [];
 
         const middlewares = [
             this.errorHandler,
