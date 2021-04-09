@@ -76,8 +76,8 @@ export type ValidationErrorResponse = ValidationErrors & {
 };
 
 export interface RouterOptions extends KoaRouter.RouterOptions {
-    errorHandler: Handler;
-    preHandler: Handler | Handler[];
+    errorHandler?: Handler;
+    preHandler?: Handler | Handler[];
 }
 
 export interface RouteConfig<
