@@ -17,7 +17,11 @@
     "strict": true,
     "strictNullChecks": true,
     "target": "ES5",
-    "lib": ["es2020"]
+    "lib": ["es2020"],
+    "baseUrl": ".",
+    "paths": {
+      "@src/*": ["src/*"]
+    }
   },
   "include": ["./**/*"],
   "exclude": ["./node_modules/**/*", "./lib/**/*"]
