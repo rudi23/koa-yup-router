@@ -13,9 +13,11 @@ type HeadersT = TypeOf<typeof headersSchema>;
 let app = new Koa();
 let request = supertest(app.callback());
 
-const expectValidEndpointRequest = async (req: supertest.SuperTest<supertest.Test>) =>
-    req
-        .post('/path/1?search=foo')
+const expectValidEndpointRequest = async (
+    req: supertest.SuperTest<supertest.Test>,
+    method: 'get' | 'post' | 'put' | 'delete' = 'post'
+) =>
+    req[method]('/path/1?search=foo')
         .set('Custom', 'value')
         .send({
             string: 'string',
@@ -163,5 +165,55 @@ describe('defining route', () => {
         app.use(router.middleware());
 
         await expectValidEndpointRequest(request);
+    });
+
+    // eslint-disable-next-line jest/expect-expect
+    it('should add route with multiple methods', async () => {
+        const router = new YupRouter();
+
+        router.addRoute({
+            method: ['get', 'post', 'put', 'delete'],
+            path: '/path/:id',
+            validate: {
+                type: 'json',
+                body: bodySchema,
+                params: paramsSchema,
+                query: querySchema,
+                headers: headersSchema,
+            },
+            handler: (ctx) => {
+                ctx.body = {
+                    params: ctx.params,
+                    query: ctx.request.query,
+                    body: ctx.request.body,
+                    headers: ctx.request.headers,
+                };
+            },
+        });
+
+        app.use(router.middleware());
+
+        await expectValidEndpointRequest(request, 'post');
+        await expectValidEndpointRequest(request, 'get');
+        await expectValidEndpointRequest(request, 'put');
+        await expectValidEndpointRequest(request, 'delete');
+    });
+
+    // eslint-disable-next-line jest/expect-expect
+    it('should allow to use prefix', async () => {
+        const router = new YupRouter({ prefix: '/prefix' });
+
+        router.addRoute({
+            method: 'get',
+            path: '/path',
+            handler: (ctx) => {
+                ctx.body = {};
+            },
+        });
+
+        app.use(router.middleware());
+
+        await request.get('/prefix/path').expect('Content-Type', /json/).expect(200);
+        await request.get('/path').expect(404);
     });
 });
