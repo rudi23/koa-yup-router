@@ -11,7 +11,7 @@
     "validation"
   ],
   "scripts": {
-    "build": "tsc --build --verbose tsconfig.json",
+    "build": "tsc --build --verbose tsconfig.build.json",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "test": "npm run test:unit && npm run test:integration",

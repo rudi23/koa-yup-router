@@ -23,6 +23,6 @@
       "@src/*": ["src/*"]
     }
   },
-  "include": ["./**/*"],
-  "exclude": ["./node_modules/**/*", "./lib/**/*"]
+  "include": ["**/*"],
+  "exclude": ["node_modules", "lib"]
 }
