@@ -8,12 +8,14 @@ module.exports = {
         requireBranch: 'master',
         commitMessage: 'chore: release ${version} \n\n${changelog}',
         tagName: 'v${version}',
+        push: false
     },
     github: {
         release: true,
+        draft: true,
     },
     npm: {
-        release: true,
+        release: false,
     },
     plugins: {
         '@release-it/conventional-changelog': {
