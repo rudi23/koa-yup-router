@@ -1,5 +1,5 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["**/*.ts", "jest.config.js"],
+  "include": ["**/*.ts", "*.js"],
   "exclude": ["/node_modules", "/lib"]
 }
