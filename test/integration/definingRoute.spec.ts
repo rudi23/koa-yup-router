@@ -200,8 +200,12 @@ describe('defining route', () => {
     });
 
     // eslint-disable-next-line jest/expect-expect
-    it('should allow to use prefix', async () => {
+    it('should allow to use prefix and use koa router route', async () => {
         const router = new YupRouter({ prefix: '/prefix' });
+
+        router.get('/', (ctx) => {
+            ctx.body = {};
+        });
 
         router.addRoute({
             method: 'get',
@@ -213,6 +217,7 @@ describe('defining route', () => {
 
         app.use(router.middleware());
 
+        await request.get('/prefix').expect(200);
         await request.get('/prefix/path').expect('Content-Type', /json/).expect(200);
         await request.get('/path').expect(404);
     });
