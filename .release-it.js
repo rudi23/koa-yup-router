@@ -8,7 +8,6 @@ module.exports = {
         requireBranch: 'master',
         commitMessage: 'chore: release ${version} \n\n${changelog}',
         tagName: 'v${version}',
-        push: false
     },
     github: {
         release: true,
