@@ -5,10 +5,10 @@
 [![NPM version][npm-image]][npm-url]
 [![npm download][download-image]][download-url]
 
-[npm-image]: https://img.shields.io/npm/v/koa-yup-router.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/koa-yup-router
-[download-image]: https://img.shields.io/npm/dm/koa-yup-router.svg?style=flat-square
-[download-url]: https://npmjs.org/package/koa-yup-router
+[npm-image]: https://img.shields.io/npm/v/@rudi23/koa-yup-router.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/@rudi23/koa-yup-router
+[download-image]: https://img.shields.io/npm/dm/@rudi23/koa-yup-router.svg?style=flat-square
+[download-url]: https://npmjs.org/package/@rudi23/koa-yup-router
 [koa]: http://koajs.com
 [co-body]: https://github.com/visionmedia/co-body
 [await-busboy]: https://github.com/aheckmann/await-busboy
@@ -17,10 +17,10 @@
 
 ### Installation
 
-Install using [`npm`](https://www.npmjs.com/package/koa-yup-router):
+Install using [`npm`][npm-url]:
 
 ```bash
-npm install koa-yup-router
+npm install @rudi23/koa-yup-router
 ```
 
 NodeJS `>= 8.0.0.` is required.
@@ -44,7 +44,7 @@ NodeJS `>= 8.0.0.` is required.
 
 ```ts
 import koa from 'koa';
-import router from 'koa-yup-router';
+import router from '@rudi23/koa-yup-router';
 
 const paramsSchema = yup.object({
     id: yup.number().required(),
@@ -97,7 +97,7 @@ app.listen(3000);
 
 ```js
 const koa = require('koa');
-const router = require('koa-yup-router');
+const router = require('@rudi23/koa-yup-router');
 
 const paramsSchema = yup.object({
     id: yup.number().required(),
