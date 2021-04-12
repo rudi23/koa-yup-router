@@ -1,3 +1,14 @@
+### [1.0.2](https://github.com/rudi23/koa-yup-router/compare/v1.0.1...v1.0.2) (2021-04-12)
+
+### Bug Fixes
+
+-   fix paths ([05624f5](https://github.com/rudi23/koa-yup-router/commit/05624f549befc9141105e6f7b085b2bed0117f38))
+
+### Configuration changes
+
+-   github release without draft ([a8dd484](https://github.com/rudi23/koa-yup-router/commit/a8dd484d3e724864e47336407edd1943dc22a7a0))
+-   push release commit ([5ccf4c1](https://github.com/rudi23/koa-yup-router/commit/5ccf4c1da0c7c5dccd796cdde192a4751e0ea997))
+
 ### [1.0.1](https://github.com/rudi23/koa-yup-router/compare/v1.0.0...v1.0.1) (2021-04-12)
 
 ### Configuration changes
