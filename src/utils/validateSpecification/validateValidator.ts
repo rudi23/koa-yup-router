@@ -1,7 +1,7 @@
 import * as yup from 'yup';
 import type { RouteConfig, ValidateConfig } from '../../@types';
 import { isObject, isEmptyObject } from '../object';
-import { inputParts } from '@src/@types/constants';
+import { inputParts } from '../../@types/constants';
 
 export default function validateValidator(validate: RouteConfig['validate']): ValidateConfig {
     if (validate === undefined) {

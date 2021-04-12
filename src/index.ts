@@ -15,7 +15,7 @@ import type {
     RouteSpecification,
     RouterOptions,
 } from './@types';
-import validatePreHandler from '@src/utils/validateSpecification/validatePreHandler';
+import validatePreHandler from './utils/validateSpecification/validatePreHandler';
 
 class YupRouter<StateT = any, CustomT = Record<string, any>> extends KoaRouter {
     routeSpecs: RouteSpecification<any, any, any, any>[] = [];

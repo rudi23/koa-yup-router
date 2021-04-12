@@ -1,4 +1,4 @@
-import type { DefaultBody, DefaultHeaders, DefaultParams, DefaultQuery, Handler } from '@src/@types';
+import type { DefaultBody, DefaultHeaders, DefaultParams, DefaultQuery, Handler } from '../../@types';
 
 export default function isHandlerSupportedFunction<
     ParamsT = DefaultParams,
