@@ -12,7 +12,6 @@ module.exports = {
     },
     github: {
         release: true,
-        draft: true,
     },
     npm: {
         release: false,
