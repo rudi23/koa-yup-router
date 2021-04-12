@@ -6,9 +6,9 @@
 [![npm download][download-image]][download-url]
 
 [npm-image]: https://img.shields.io/npm/v/@rudi23/koa-yup-router.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/@rudi23/koa-yup-router
+[npm-url]: https://www.npmjs.com/package/@rudi23/koa-yup-router
 [download-image]: https://img.shields.io/npm/dm/@rudi23/koa-yup-router.svg?style=flat-square
-[download-url]: https://npmjs.org/package/@rudi23/koa-yup-router
+[download-url]: https://www.npmjs.com/package/@rudi23/koa-yup-router
 [koa]: http://koajs.com
 [co-body]: https://github.com/visionmedia/co-body
 [await-busboy]: https://github.com/aheckmann/await-busboy
