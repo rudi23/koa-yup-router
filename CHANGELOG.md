@@ -1,3 +1,13 @@
+### [1.0.3](https://github.com/rudi23/koa-yup-router/compare/v1.0.2...v1.0.3) (2021-04-15)
+
+### Bug Fixes
+
+-   fix and simplify types ([e110e19](https://github.com/rudi23/koa-yup-router/commit/e110e19b1cf0f77be59935fd9edadacb5aa795f0))
+
+### Code Refactoring
+
+-   rename types directory ([26dfa63](https://github.com/rudi23/koa-yup-router/commit/26dfa63da779c907dde8bc80c3b3fecd81db37c1))
+
 ### [1.0.2](https://github.com/rudi23/koa-yup-router/compare/v1.0.1...v1.0.2) (2021-04-12)
 
 ### Bug Fixes
