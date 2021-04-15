@@ -1,4 +1,4 @@
-import type { RouteConfig } from '../../@types';
+import type { RouteConfig } from '../../types';
 
 export default function validateMethod(method: RouteConfig['method']): string[] {
     let methods = method;

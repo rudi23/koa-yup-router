@@ -1,6 +1,6 @@
 import { form } from 'co-body';
 import type Koa from 'koa';
-import type { FormBodyOptions } from '../../@types';
+import type { FormBodyOptions } from '../../types';
 
 export default function createParseFormBody(options: FormBodyOptions = {}): Koa.Middleware {
     return async function parseFormBody(ctx: Koa.Context): Promise<void> {

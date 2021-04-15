@@ -3,8 +3,7 @@ import type Koa from 'koa';
 import { valueOfType } from '../../utils';
 import createValidate from '@src/middlewares/validate';
 import captureError from '@src/utils/captureError';
-// import * as constants from '@src/@types/constants';
-import type { ValidateConfig } from '@src/@types';
+import type { ValidateConfig } from '@src/types';
 
 jest.mock('@src/utils/captureError');
 
@@ -29,7 +28,7 @@ const calledOptions = {
 };
 
 const mockInputParts = jest.fn().mockReturnValue(['headers', 'query', 'params', 'body']);
-jest.mock('@src/@types/constants', () => ({
+jest.mock('@src/types/constants', () => ({
     get inputParts() {
         return mockInputParts();
     },

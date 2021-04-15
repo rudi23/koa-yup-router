@@ -5,7 +5,7 @@ import type {
     DefaultQuery,
     RouteConfig,
     RouteSpecification,
-} from '../../@types';
+} from '../../types';
 import validateValidator from './validateValidator';
 import validateMethod from './validateMethod';
 import validateHandler from './validateHandler';

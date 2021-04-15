@@ -1,6 +1,6 @@
 import { valueOfType } from '../../../utils';
 import validateSpecification from '@src/utils/validateSpecification';
-import type { RouteConfig } from '@src/@types';
+import type { RouteConfig } from '@src/types';
 import validateHandler from '@src/utils/validateSpecification/validateHandler';
 import validatePreHandler from '@src/utils/validateSpecification/validatePreHandler';
 import validateMethod from '@src/utils/validateSpecification/validateMethod';

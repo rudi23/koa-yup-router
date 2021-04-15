@@ -1,4 +1,4 @@
-import type { DefaultBody, DefaultHeaders, DefaultParams, DefaultQuery, Handler, RouteConfig } from '../../@types';
+import type { DefaultBody, DefaultHeaders, DefaultParams, DefaultQuery, Handler, RouteConfig } from '../../types';
 import isHandlerSupportedFunction from './isHandlerSupportedFunction';
 
 export default function validatePreHandler<

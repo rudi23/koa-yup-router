@@ -7,7 +7,7 @@ import parseFormBody from '@src/middlewares/parseBody/parseFormBody';
 import parseMultipartBody from '@src/middlewares/parseBody/parseMultipartBody';
 import emptyMiddleware from '@src/middlewares/emptyMiddleware';
 import captureError from '@src/utils/captureError';
-import type { RouteSpecification } from '@src/@types';
+import type { RouteSpecification } from '@src/types';
 
 jest.mock('@src/middlewares/parseBody/parseJsonBody');
 jest.mock('@src/middlewares/parseBody/parseFormBody');

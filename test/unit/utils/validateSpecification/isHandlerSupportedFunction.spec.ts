@@ -1,5 +1,5 @@
 import isHandlerSupportedFunction from '@src/utils/validateSpecification/isHandlerSupportedFunction';
-import type { Handler } from '@src/@types';
+import type { Handler } from '@src/types';
 
 describe('utils/validateSpecification/isHandlerSupportedFunction', () => {
     it('throws error when handler is not defined', () => {

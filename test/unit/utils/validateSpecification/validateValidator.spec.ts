@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 import validateValidator from '@src/utils/validateSpecification/validateValidator';
-import type { ValidateConfig } from '@src/@types';
+import type { ValidateConfig } from '@src/types';
 
 describe('utils/validateSpecification/validateValidator', () => {
     it('returns empty validator if validate is not defined', () => {

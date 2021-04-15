@@ -3,7 +3,7 @@ import supertest from 'supertest';
 import type { TypeOf } from 'yup';
 import { paramsSchema, querySchema, bodySchema, headersSchema } from './schema';
 import YupRouter from '@src/index';
-import type { RouterMiddleware, RouterContext } from '@src/@types';
+import type { RouterMiddleware, RouterContext } from '@src/types';
 
 type ParamsT = TypeOf<typeof paramsSchema>;
 type QueryT = TypeOf<typeof querySchema>;

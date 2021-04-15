@@ -2,7 +2,7 @@ import Koa from 'koa';
 import supertest from 'supertest';
 import { paramsSchema, querySchema, bodySchema, headersSchema } from './schema';
 import YupRouter from '@src/index';
-import type { ValidationErrors } from '@src/@types';
+import type { ValidationErrors } from '@src/types';
 
 const app = new Koa();
 const request = supertest(app.callback());

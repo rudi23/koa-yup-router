@@ -8,7 +8,7 @@ import type {
     InputType,
     RouteSpecification,
     ValidateConfig,
-} from '../../@types';
+} from '../../types';
 import captureError from '../../utils/captureError';
 import emptyMiddleware from '../emptyMiddleware';
 import parseFormBody from './parseFormBody';

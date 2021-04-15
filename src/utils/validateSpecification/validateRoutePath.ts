@@ -1,4 +1,4 @@
-import type { RouteConfig } from '../../@types';
+import type { RouteConfig } from '../../types';
 
 export default function validateRoutePath(path: RouteConfig['path']): string | RegExp {
     if (typeof path !== 'string' && !((path as any) instanceof RegExp)) {

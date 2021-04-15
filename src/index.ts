@@ -14,7 +14,7 @@ import type {
     RouteConfig,
     RouteSpecification,
     RouterOptions,
-} from './@types';
+} from './types';
 import validatePreHandler from './utils/validateSpecification/validatePreHandler';
 
 class YupRouter<StateT = any, CustomT = Record<string, any>> extends KoaRouter {
@@ -92,6 +92,6 @@ class YupRouter<StateT = any, CustomT = Record<string, any>> extends KoaRouter {
     }
 }
 
-export * from './@types';
+export * from './types';
 
 export default YupRouter;
