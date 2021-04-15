@@ -104,13 +104,13 @@ describe('parse body', () => {
                 let filename;
                 let part;
                 // eslint-disable-next-line no-await-in-loop,no-cond-assign
-                while ((part = await ctx.request.parts)) {
+                while ((part = await (ctx.request.parts as any))) {
                     filename = part.filename;
                     part.resume();
                 }
 
                 ctx.body = {
-                    color: ctx.request.parts.field.color,
+                    color: (ctx.request.parts as any).field.color,
                     file: filename,
                 };
             },

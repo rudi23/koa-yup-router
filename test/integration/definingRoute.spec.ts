@@ -29,9 +29,10 @@ const expectValidEndpointRequest = async (
         .expect('Content-Type', /json/)
         .expect(200)
         .then((response) => {
-            expect(response.body.params).toEqual({ id: 1 });
-            expect(response.body.query).toEqual({ search: 'foo' });
-            expect(response.body.headers.custom).toEqual('value');
+            expect(response.body.id).toBe(1);
+            expect(response.body.search).toBe('foo');
+            expect(response.body.custom).toBe('value');
+            expect(response.body.string).toBe('string');
             expect(response.body.body).toEqual({
                 string: 'string',
                 number: 100,
@@ -51,10 +52,11 @@ describe('defining route', () => {
     it('should add route with handler separately defined as RouterMiddleware', async () => {
         const handler: RouterMiddleware<ParamsT, QueryT, BodyT, HeadersT> = (ctx) => {
             ctx.body = {
-                params: ctx.params,
-                query: ctx.request.query,
+                id: ctx.params.id,
+                search: ctx.request.query.search,
+                string: ctx.request.body.string,
                 body: ctx.request.body,
-                headers: ctx.request.headers,
+                custom: ctx.request.headers.custom,
             };
         };
 
@@ -82,10 +84,11 @@ describe('defining route', () => {
     it('should add route with handler separately defined with RouterContext', async () => {
         function handler(ctx: RouterContext<ParamsT, QueryT, BodyT, HeadersT>) {
             ctx.body = {
-                params: ctx.params,
-                query: ctx.request.query,
+                id: ctx.params.id,
+                search: ctx.request.query.search,
+                string: ctx.request.body.string,
                 body: ctx.request.body,
-                headers: ctx.request.headers,
+                custom: ctx.request.headers.custom,
             };
         }
 
@@ -125,10 +128,11 @@ describe('defining route', () => {
             },
             handler: (ctx) => {
                 ctx.body = {
-                    params: ctx.params,
-                    query: ctx.request.query,
+                    id: ctx.params.id,
+                    search: ctx.request.query.search,
+                    string: ctx.request.body.string,
                     body: ctx.request.body,
-                    headers: ctx.request.headers,
+                    custom: ctx.request.headers.custom,
                 };
             },
         });
@@ -154,10 +158,11 @@ describe('defining route', () => {
             },
             handler: (ctx) => {
                 ctx.body = {
-                    params: ctx.params,
-                    query: ctx.request.query,
+                    id: ctx.params.id,
+                    search: ctx.request.query.search,
+                    string: (ctx.request.body as any).string,
                     body: ctx.request.body,
-                    headers: ctx.request.headers,
+                    custom: ctx.request.headers.custom,
                 };
             },
         });
@@ -183,10 +188,11 @@ describe('defining route', () => {
             },
             handler: (ctx) => {
                 ctx.body = {
-                    params: ctx.params,
-                    query: ctx.request.query,
+                    id: ctx.params.id,
+                    search: ctx.request.query.search,
+                    string: (ctx.request.body as any).string,
                     body: ctx.request.body,
-                    headers: ctx.request.headers,
+                    custom: ctx.request.headers.custom,
                 };
             },
         });

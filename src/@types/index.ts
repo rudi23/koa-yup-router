@@ -4,17 +4,17 @@
 import type { ParsedUrlQuery } from 'querystring';
 import type { IncomingHttpHeaders } from 'http';
 import type CoBody from 'co-body';
-import type Busboy from 'busboy';
 import type * as Koa from 'koa';
 import type * as Yup from 'yup';
 import type * as KoaRouter from '@koa/router';
 import type YupRouter from '../index';
 
-// because we don not want koa-bodyparser/index.d.ts body?: any
+// because we don not want koa-bodyparser/index.d.ts to set body?: any
 declare module 'koa' {
     interface Request {
         body?: unknown;
         rawBody: string;
+        parts?: unknown;
     }
 }
 
@@ -25,18 +25,27 @@ type NestedHandler<
     HeadersT = DefaultHeaders
 > = ReadonlyArray<Handler<ParamsT, QueryT, BodyT, HeadersT>>;
 
-interface RouterParameterizedContext<ParamsT = DefaultParams, StateT = Koa.DefaultState, ContextT = Record<string, any>>
-    extends Koa.Context {
-    params: ParamsT;
-    router: YupRouter<StateT, ContextT>;
-    _matchedRoute: string | RegExp | undefined;
-    _matchedRouteName: string | undefined;
+export interface RouterOptions extends KoaRouter.RouterOptions {
+    errorHandler?: Handler;
+    preHandler?: Handler | Handler[];
 }
 
-interface RequestWithBody<BodyT = DefaultBody, QueryT = ParsedUrlQuery, HeadersT = IncomingHttpHeaders>
-    extends Koa.Request<QueryT, HeadersT> {
-    body: BodyT;
-}
+export type MultipartBodyOptions = {
+    headers?: any;
+    highWaterMark?: number;
+    fileHwm?: number;
+    defCharset?: string;
+    preservePath?: boolean;
+    limits?: {
+        fieldNameSize?: number;
+        fieldSize?: number;
+        fields?: number;
+        fileSize?: number;
+        files?: number;
+        parts?: number;
+        headerPairs?: number;
+    };
+};
 
 export type DefaultParams = Record<string, any>;
 export type DefaultQuery = Record<string, any>;
@@ -49,13 +58,13 @@ export type Handler<ParamsT = DefaultParams, QueryT = DefaultQuery, BodyT = Defa
 
 export type FormBodyOptions = CoBody.Options;
 export type JsonBodyOptions = CoBody.Options;
-export type MultipartBodyOptions = Busboy.BusboyConfig;
 export type InputType = 'form' | 'json' | 'multipart' | 'stream';
 export type ValidationType = 'headers' | 'query' | 'params' | 'body';
 export type ErrorType = ValidationType | 'type';
+export type ValidationSchema = Yup.ObjectSchema<any>;
 
 export type ValidateConfigBase = {
-    [K in ValidationType]?: Yup.ObjectSchema<any>;
+    [K in ValidationType]?: ValidationSchema;
 };
 
 export type ValidateConfig = ValidateConfigBase & {
@@ -75,17 +84,12 @@ export type ValidationErrorResponse = ValidationErrors & {
     message: string;
 };
 
-export interface RouterOptions extends KoaRouter.RouterOptions {
-    errorHandler?: Handler;
-    preHandler?: Handler | Handler[];
-}
-
-export interface RouteConfig<
+export type RouteConfig<
     ParamsT = DefaultParams,
     QueryT = DefaultQuery,
     BodyT = DefaultBody,
     HeadersT = DefaultHeaders
-> {
+> = {
     preHandler?: Handler<ParamsT, QueryT, BodyT, HeadersT> | Handler<ParamsT, QueryT, BodyT, HeadersT>[];
     validate?: ValidateConfig;
     meta?: any;
@@ -93,14 +97,14 @@ export interface RouteConfig<
     method: string | string[];
     path: string | RegExp;
     handler: Handler<ParamsT, QueryT, BodyT, HeadersT> | Handler<ParamsT, QueryT, BodyT, HeadersT>[];
-}
+};
 
-export interface RouteSpecification<
+export type RouteSpecification<
     ParamsT = DefaultParams,
     QueryT = DefaultQuery,
     BodyT = DefaultBody,
     HeadersT = DefaultHeaders
-> {
+> = {
     preHandlers: Handler<ParamsT, QueryT, BodyT, HeadersT>[];
     validate?: ValidateConfig;
     meta?: any;
@@ -108,6 +112,21 @@ export interface RouteSpecification<
     methods: string[];
     path: string | RegExp;
     handlers: Handler<ParamsT, QueryT, BodyT, HeadersT>[];
+};
+
+export interface RouterParameterizedContext<
+    ParamsT = DefaultParams,
+    QueryT = ParsedUrlQuery,
+    BodyT = DefaultBody,
+    HeadersT = IncomingHttpHeaders,
+    StateT = Koa.DefaultState,
+    ContextT = Koa.DefaultContext
+> extends Koa.ParameterizedContext {
+    params: ParamsT;
+    request: Koa.Request & { query: QueryT; body: BodyT; header: HeadersT; headers: HeadersT };
+    router: YupRouter<StateT, ContextT>;
+    _matchedRoute: string | RegExp | undefined;
+    _matchedRouteName: string | undefined;
 }
 
 export type RouterContext<
@@ -116,14 +135,10 @@ export type RouterContext<
     BodyT = DefaultBody,
     HeadersT = IncomingHttpHeaders,
     StateT = Koa.DefaultState,
-    ContextT = Record<string, any>
+    ContextT = Koa.DefaultState
 > = Koa.ParameterizedContext<
     StateT,
-    ContextT & RouterParameterizedContext<ParamsT, StateT, ContextT>,
-    unknown,
-    QueryT,
-    HeadersT,
-    RequestWithBody<BodyT, QueryT, HeadersT>
+    ContextT & RouterParameterizedContext<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>
 >;
 
 export type RouterMiddleware<
@@ -132,12 +147,5 @@ export type RouterMiddleware<
     BodyT = DefaultBody,
     HeadersT = IncomingHttpHeaders,
     StateT = Koa.DefaultState,
-    ContextT = Record<string, any>
-> = Koa.Middleware<
-    StateT,
-    ContextT & RouterParameterizedContext<ParamsT, StateT, ContextT>,
-    unknown,
-    QueryT,
-    HeadersT,
-    RequestWithBody<BodyT, QueryT, HeadersT>
->;
+    ContextT = Koa.DefaultState
+> = Koa.Middleware<StateT, ContextT & RouterParameterizedContext<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>>;

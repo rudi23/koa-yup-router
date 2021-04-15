@@ -92,4 +92,6 @@ class YupRouter<StateT = any, CustomT = Record<string, any>> extends KoaRouter {
     }
 }
 
+export * from './@types';
+
 export default YupRouter;
