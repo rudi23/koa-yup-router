@@ -1,3 +1,9 @@
+### [1.0.4](https://github.com/rudi23/koa-yup-router/compare/v1.0.3...v1.0.4) (2021-04-15)
+
+### Bug Fixes
+
+-   move required types to dependencies ([b1014ec](https://github.com/rudi23/koa-yup-router/commit/b1014ec6b76ce3f215cbdc571a4b6fa836ebac92))
+
 ### [1.0.3](https://github.com/rudi23/koa-yup-router/compare/v1.0.2...v1.0.3) (2021-04-15)
 
 ### Bug Fixes

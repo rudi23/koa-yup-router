@@ -1,6 +1,6 @@
 {
   "name": "@rudi23/koa-yup-router",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Configurable, input validated routing for koa using yup",
   "keywords": [
     "yup",
