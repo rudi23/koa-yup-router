@@ -22,8 +22,10 @@ type NestedHandler<
     ParamsT = DefaultParams,
     QueryT = DefaultQuery,
     BodyT = DefaultBody,
-    HeadersT = DefaultHeaders
-> = ReadonlyArray<Handler<ParamsT, QueryT, BodyT, HeadersT>>;
+    HeadersT = DefaultHeaders,
+    StateT = DefaultState,
+    ContextT = DefaultContext
+> = ReadonlyArray<Handler<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>>;
 
 export interface RouterOptions extends KoaRouter.RouterOptions {
     errorHandler?: Handler;
@@ -48,13 +50,22 @@ export type MultipartBodyOptions = {
 };
 
 export type DefaultParams = Record<string, any>;
-export type DefaultQuery = Record<string, any>;
+export type DefaultQuery = ParsedUrlQuery;
 export type DefaultBody = unknown;
-export type DefaultHeaders = Record<string, any>;
+export type DefaultHeaders = IncomingHttpHeaders;
+export type DefaultState = any;
+export type DefaultContext = Record<string, any>;
 
-export type Handler<ParamsT = DefaultParams, QueryT = DefaultQuery, BodyT = DefaultBody, HeadersT = DefaultHeaders> =
-    | RouterMiddleware<ParamsT, QueryT, BodyT, HeadersT>
-    | NestedHandler<ParamsT, QueryT, BodyT, HeadersT>;
+export type Handler<
+    ParamsT = DefaultParams,
+    QueryT = DefaultQuery,
+    BodyT = DefaultBody,
+    HeadersT = DefaultHeaders,
+    StateT = DefaultState,
+    ContextT = DefaultContext
+> =
+    | RouterMiddleware<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>
+    | NestedHandler<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>;
 
 export type FormBodyOptions = CoBody.Options;
 export type JsonBodyOptions = CoBody.Options;
@@ -88,64 +99,69 @@ export type RouteConfig<
     ParamsT = DefaultParams,
     QueryT = DefaultQuery,
     BodyT = DefaultBody,
-    HeadersT = DefaultHeaders
+    HeadersT = DefaultHeaders,
+    StateT = DefaultState,
+    ContextT = DefaultState
 > = {
-    preHandler?: Handler<ParamsT, QueryT, BodyT, HeadersT> | Handler<ParamsT, QueryT, BodyT, HeadersT>[];
+    preHandler?:
+        | Handler<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>
+        | Handler<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>[];
     validate?: ValidateConfig;
     meta?: any;
     name?: string;
     method: string | string[];
     path: string | RegExp;
-    handler: Handler<ParamsT, QueryT, BodyT, HeadersT> | Handler<ParamsT, QueryT, BodyT, HeadersT>[];
+    handler:
+        | Handler<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>
+        | Handler<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>[];
 };
 
 export type RouteSpecification<
     ParamsT = DefaultParams,
     QueryT = DefaultQuery,
     BodyT = DefaultBody,
-    HeadersT = DefaultHeaders
+    HeadersT = DefaultHeaders,
+    StateT = DefaultState,
+    ContextT = DefaultState
 > = {
-    preHandlers: Handler<ParamsT, QueryT, BodyT, HeadersT>[];
-    validate?: ValidateConfig;
+    preHandlers: Handler<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>[];
+    validate: ValidateConfig;
     meta?: any;
     name?: string;
     methods: string[];
     path: string | RegExp;
-    handlers: Handler<ParamsT, QueryT, BodyT, HeadersT>[];
+    handlers: Handler<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>[];
 };
 
-export interface RouterParameterizedContext<
+export type RouterParameterizedContext<
     ParamsT = DefaultParams,
-    QueryT = ParsedUrlQuery,
+    QueryT = DefaultQuery,
     BodyT = DefaultBody,
-    HeadersT = IncomingHttpHeaders,
-    StateT = Koa.DefaultState,
-    ContextT = Koa.DefaultContext
-> extends Koa.ParameterizedContext {
+    HeadersT = DefaultHeaders,
+    StateT = DefaultState,
+    ContextT = DefaultState
+> = Koa.ParameterizedContext<StateT, ContextT> & {
     params: ParamsT;
     request: Koa.Request & { query: QueryT; body: BodyT; header: HeadersT; headers: HeadersT };
     router: YupRouter<StateT, ContextT>;
     _matchedRoute: string | RegExp | undefined;
     _matchedRouteName: string | undefined;
-}
+};
 
 export type RouterContext<
     ParamsT = DefaultParams,
-    QueryT = ParsedUrlQuery,
+    QueryT = DefaultQuery,
     BodyT = DefaultBody,
-    HeadersT = IncomingHttpHeaders,
-    StateT = Koa.DefaultState,
-    ContextT = Koa.DefaultState
-> = Koa.ParameterizedContext<
-    StateT,
-    ContextT & RouterParameterizedContext<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>
->;
+    HeadersT = DefaultHeaders,
+    StateT = DefaultState,
+    ContextT = DefaultState
+> = RouterParameterizedContext<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>;
 
 export type RouterMiddleware<
     ParamsT = DefaultParams,
-    QueryT = ParsedUrlQuery,
+    QueryT = DefaultQuery,
     BodyT = DefaultBody,
-    HeadersT = IncomingHttpHeaders,
-    StateT = Koa.DefaultState,
-    ContextT = Koa.DefaultState
+    HeadersT = DefaultHeaders,
+    StateT = DefaultState,
+    ContextT = DefaultState
 > = Koa.Middleware<StateT, ContextT & RouterParameterizedContext<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>>;

@@ -1,3 +1,4 @@
+import type * as Koa from 'koa';
 import delegate from 'delegates';
 import KoaRouter from '@koa/router';
 import parseBody from './middlewares/parseBody';
@@ -14,11 +15,13 @@ import type {
     RouteConfig,
     RouteSpecification,
     RouterOptions,
+    DefaultState,
+    DefaultContext,
 } from './types';
 import validatePreHandler from './utils/validateSpecification/validatePreHandler';
 
-class YupRouter<StateT = any, CustomT = Record<string, any>> extends KoaRouter {
-    routeSpecs: RouteSpecification<any, any, any, any>[] = [];
+class YupRouter<StateRT = DefaultState, ContextRT = DefaultContext> extends KoaRouter {
+    routeSpecs: RouteSpecification<any, any, any, any, any, any>[] = [];
 
     router = new KoaRouter();
 
@@ -29,7 +32,7 @@ class YupRouter<StateT = any, CustomT = Record<string, any>> extends KoaRouter {
     constructor(options?: RouterOptions) {
         super();
         if (!(this instanceof YupRouter)) {
-            return new YupRouter<StateT, CustomT>(options);
+            return new YupRouter<StateRT, ContextRT>(options);
         }
 
         const { errorHandler: customErrorHandler, preHandler, ...baseOptions } = options ?? {};
@@ -53,28 +56,27 @@ class YupRouter<StateT = any, CustomT = Record<string, any>> extends KoaRouter {
             .method('param');
     }
 
-    addRoute<ParamsT = DefaultParams, QueryT = DefaultQuery, BodyT = DefaultBody, HeadersT = DefaultHeaders>(
-        config: RouteConfig<ParamsT, QueryT, BodyT, HeadersT>
-    ): YupRouter {
+    addRoute<
+        ParamsT = DefaultParams,
+        QueryT = DefaultQuery,
+        BodyT = DefaultBody,
+        HeadersT = DefaultHeaders,
+        StateT = StateRT,
+        ContextT = ContextRT
+    >(config: RouteConfig<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>): YupRouter {
         this.registerRoute(config);
 
         return this;
     }
 
-    private registerRoute<
-        ParamsT = DefaultParams,
-        QueryT = DefaultQuery,
-        BodyT = DefaultBody,
-        HeadersT = DefaultHeaders
-    >(config: RouteConfig<ParamsT, QueryT, BodyT, HeadersT>): KoaRouter.Layer {
-        const spec = validateSpecification<ParamsT, QueryT, BodyT, HeadersT>(config);
+    private registerRoute<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>(
+        config: RouteConfig<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>
+    ): KoaRouter.Layer {
+        const spec = validateSpecification<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>(config);
 
         this.routeSpecs.push(spec);
 
-        const { name, path } = spec;
-        const methods = [spec.methods].flat();
-        const preHandlers = spec.preHandlers ? [spec.preHandlers].flat(Infinity) : [];
-        const handlers = spec.handlers ? [spec.handlers].flat(Infinity) : [];
+        const { handlers, name, methods, path, preHandlers } = spec;
 
         const middlewares = [
             this.errorHandler,
@@ -84,7 +86,7 @@ class YupRouter<StateT = any, CustomT = Record<string, any>> extends KoaRouter {
             parseBody(spec),
             validate(spec),
             ...handlers,
-        ];
+        ] as Koa.Middleware[];
 
         const opts = name ? { name } : undefined;
 

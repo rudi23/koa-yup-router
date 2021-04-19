@@ -51,8 +51,8 @@ describe('middleware/errorHandler', () => {
         await errorHandler(context, next);
 
         expect(context.status).toBe(400);
-        expect(context.body.params).toBeInstanceOf(ValidationError);
-        expect(context.body.params.message).toBe('Params error');
+        expect((context.body as any).params).toBeInstanceOf(ValidationError);
+        expect((context.body as any).params.message).toBe('Params error');
         expect(context.body).toEqual({
             code: 400,
             message: 'Error in request params',

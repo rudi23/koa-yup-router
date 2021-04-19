@@ -1,17 +1,30 @@
-import type { DefaultBody, DefaultHeaders, DefaultParams, DefaultQuery, Handler, RouteConfig } from '../../types';
+import type {
+    DefaultBody,
+    DefaultHeaders,
+    DefaultParams,
+    DefaultQuery,
+    Handler,
+    RouteConfig,
+    DefaultContext,
+    DefaultState,
+} from '../../types';
 import isHandlerSupportedFunction from './isHandlerSupportedFunction';
 
 export default function validatePreHandler<
     ParamsT = DefaultParams,
     QueryT = DefaultQuery,
     BodyT = DefaultBody,
-    HeadersT = DefaultHeaders
+    HeadersT = DefaultHeaders,
+    StateT = DefaultState,
+    ContextT = DefaultContext
 >(
-    preHandler: RouteConfig<ParamsT, QueryT, BodyT, HeadersT>['preHandler']
-): Handler<ParamsT, QueryT, BodyT, HeadersT>[] {
+    preHandler: RouteConfig<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>['preHandler']
+): Handler<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>[] {
     if (!preHandler) {
         return [];
     }
 
-    return [preHandler].flat(Infinity).map((fn) => isHandlerSupportedFunction(fn));
+    return [preHandler]
+        .flat(Infinity)
+        .map((fn) => isHandlerSupportedFunction<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>(fn));
 }

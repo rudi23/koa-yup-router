@@ -15,6 +15,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "test": "npm run test:unit && npm run test:integration",
+    "test:build": "tsc --build --verbose tsconfig.json",
     "test:unit": "jest test/unit",
     "test:integration": "jest test/integration",
     "test:coverage": "jest --coverage",

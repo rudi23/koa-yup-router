@@ -4,9 +4,11 @@ import captureError from '../utils/captureError';
 import { inputParts } from '../types/constants';
 import type {
     DefaultBody,
+    DefaultContext,
     DefaultHeaders,
     DefaultParams,
     DefaultQuery,
+    DefaultState,
     RouteSpecification,
     ValidationType,
 } from '../types';
@@ -54,8 +56,10 @@ export default function createValidate<
     ParamsT = DefaultParams,
     QueryT = DefaultQuery,
     BodyT = DefaultBody,
-    HeadersT = DefaultHeaders
->(spec: RouteSpecification<ParamsT, QueryT, BodyT, HeadersT>): Koa.Middleware {
+    HeadersT = DefaultHeaders,
+    StateT = DefaultState,
+    ContextT = DefaultContext
+>(spec: RouteSpecification<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>): Koa.Middleware {
     return async function validate(ctx: Koa.Context, next: Koa.Next): Promise<void> {
         inputParts.forEach((inputPart) => {
             const schema = spec.validate?.[inputPart];

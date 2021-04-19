@@ -47,7 +47,7 @@ describe('middleware/validate', () => {
             methods: [],
             handlers: [],
             path: '/path',
-            validate: undefined,
+            validate: {},
         })(context, next);
 
         expect(context).toEqual({});

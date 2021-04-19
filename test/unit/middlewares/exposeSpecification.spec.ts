@@ -13,6 +13,7 @@ describe('middleware/exposeSpecification', () => {
             handlers: [],
             methods: ['get'],
             path: '/path',
+            validate: {},
         })(context, next);
 
         expect(context.state.route).toEqual({
@@ -20,6 +21,7 @@ describe('middleware/exposeSpecification', () => {
             handlers: [],
             methods: ['get'],
             path: '/path',
+            validate: {},
         });
         expect(next).toHaveBeenCalled();
     });
@@ -37,6 +39,7 @@ describe('middleware/exposeSpecification', () => {
             handlers: [],
             methods: ['get'],
             path: '/path',
+            validate: {},
         })(context, next);
 
         expect(context.state.foo).toBe('bar');
@@ -45,6 +48,7 @@ describe('middleware/exposeSpecification', () => {
             handlers: [],
             methods: ['get'],
             path: '/path',
+            validate: {},
         });
         expect(next).toHaveBeenCalled();
     });

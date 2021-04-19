@@ -227,4 +227,56 @@ describe('defining route', () => {
         await request.get('/prefix/path').expect('Content-Type', /json/).expect(200);
         await request.get('/path').expect(404);
     });
+
+    // eslint-disable-next-line jest/expect-expect
+    it('should allow to use custom state and context', async () => {
+        const router = new YupRouter();
+
+        type StateT = {
+            foo: string;
+        };
+        type ContextT = {
+            bar: string;
+        };
+
+        router.addRoute<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>({
+            method: 'get',
+            path: '/path/:id',
+            validate: {
+                type: 'json',
+                body: bodySchema,
+                params: paramsSchema,
+                query: querySchema,
+                headers: headersSchema,
+            },
+            handler: (ctx) => {
+                ctx.bar = 'bar';
+                ctx.state = { foo: 'foo' };
+
+                ctx.body = {
+                    state: ctx.state.foo,
+                    context: ctx.bar,
+                };
+            },
+        });
+
+        app.use(router.middleware());
+
+        await request
+            .get('/path/1?search=foo')
+            .set('Custom', 'value')
+            .send({
+                string: 'string',
+                number: 100,
+                object: {
+                    bool: false,
+                },
+            })
+            .expect('Content-Type', /json/)
+            .expect(200)
+            .then((response) => {
+                expect(response.body.state).toBe('foo');
+                expect(response.body.context).toBe('bar');
+            });
+    });
 });

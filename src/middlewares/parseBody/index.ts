@@ -2,9 +2,11 @@ import type Koa from 'koa';
 import * as yup from 'yup';
 import type {
     DefaultBody,
+    DefaultContext,
     DefaultHeaders,
     DefaultParams,
     DefaultQuery,
+    DefaultState,
     InputType,
     RouteSpecification,
     ValidateConfig,
@@ -33,8 +35,10 @@ export default function createParseBody<
     ParamsT = DefaultParams,
     QueryT = DefaultQuery,
     BodyT = DefaultBody,
-    HeadersT = DefaultHeaders
->(spec: RouteSpecification<ParamsT, QueryT, BodyT, HeadersT>): Koa.Middleware {
+    HeadersT = DefaultHeaders,
+    StateT = DefaultState,
+    ContextT = DefaultContext
+>(spec: RouteSpecification<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>): Koa.Middleware {
     if (!spec.validate?.type) {
         return emptyMiddleware;
     }
