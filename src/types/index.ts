@@ -18,18 +18,11 @@ declare module 'koa' {
     }
 }
 
-type NestedHandler<
-    ParamsT = DefaultParams,
-    QueryT = DefaultQuery,
-    BodyT = DefaultBody,
-    HeadersT = DefaultHeaders,
-    StateT = DefaultState,
-    ContextT = DefaultContext
-> = ReadonlyArray<Handler<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>>;
+export type DeepArray<T> = Array<T | DeepArray<T>>;
 
 export interface RouterOptions extends KoaRouter.RouterOptions {
     errorHandler?: Handler;
-    preHandler?: Handler | Handler[];
+    preHandler?: Handler | DeepArray<Handler>;
 }
 
 export type MultipartBodyOptions = {
@@ -63,9 +56,7 @@ export type Handler<
     HeadersT = DefaultHeaders,
     StateT = DefaultState,
     ContextT = DefaultContext
-> =
-    | RouterMiddleware<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>
-    | NestedHandler<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>;
+> = RouterMiddleware<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>;
 
 export type FormBodyOptions = CoBody.Options;
 export type JsonBodyOptions = CoBody.Options;
@@ -105,7 +96,7 @@ export type RouteConfig<
 > = {
     preHandler?:
         | Handler<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>
-        | Handler<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>[];
+        | DeepArray<Handler<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>>;
     validate?: ValidateConfig;
     meta?: any;
     name?: string;
@@ -113,7 +104,7 @@ export type RouteConfig<
     path: string | RegExp;
     handler:
         | Handler<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>
-        | Handler<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>[];
+        | DeepArray<Handler<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>>;
 };
 
 export type RouteSpecification<
