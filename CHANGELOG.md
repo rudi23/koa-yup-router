@@ -1,3 +1,9 @@
+### [1.0.7](https://github.com/rudi23/koa-yup-router/compare/v1.0.6...v1.0.7) (2021-05-20)
+
+### Bug Fixes
+
+-   use Koa default state and context ([522d0b2](https://github.com/rudi23/koa-yup-router/commit/522d0b28771287db275860ae6d15d290b794f6c0))
+
 ### [1.0.6](https://github.com/rudi23/koa-yup-router/compare/v1.0.5...v1.0.6) (2021-05-20)
 
 ### Bug Fixes
