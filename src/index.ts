@@ -85,7 +85,7 @@ class YupRouter<StateRT = DefaultState, ContextRT = DefaultContext> extends KoaR
             validate(spec),
             this.errorHandler,
             ...handlers,
-        ] as RouterMiddleware[];
+        ] as RouterMiddleware<ParamsT, QueryT, BodyT, HeadersT, StateT, any>[];
 
         const opts = name ? { name } : undefined;
 
