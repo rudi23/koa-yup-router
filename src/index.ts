@@ -78,12 +78,12 @@ class YupRouter<StateRT = DefaultState, ContextRT = DefaultContext> extends KoaR
         const { handlers, name, methods, path, preHandlers } = spec;
 
         const middlewares = [
-            this.errorHandler,
             ...this.preHandlers,
             ...preHandlers,
             exposeSpecification(spec),
             parseBody(spec),
             validate(spec),
+            this.errorHandler,
             ...handlers,
         ] as RouterMiddleware[];
 

@@ -14,8 +14,6 @@ const prepareMessage = (invalid: ValidationErrors): string => {
 };
 
 export default async function errorHandler(ctx: Koa.Context, next: Koa.Next): Promise<void> {
-    await next();
-
     const invalid = ctx.invalid as ValidationErrors | undefined;
     if (invalid !== undefined && isObject(invalid) && !isEmptyObject(invalid)) {
         const invalidFiltered = filterObject(invalid, errorTypes);
@@ -31,5 +29,7 @@ export default async function errorHandler(ctx: Koa.Context, next: Koa.Next): Pr
 
         ctx.status = 400;
         ctx.body = body;
+    } else {
+        await next();
     }
 }

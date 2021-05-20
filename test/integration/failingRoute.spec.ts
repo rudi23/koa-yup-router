@@ -155,4 +155,36 @@ describe('failing route', () => {
                 });
             });
     });
+
+    it('should not process handler when there is validation error', async () => {
+        const handler = jest.fn();
+
+        const router = new YupRouter();
+
+        router.addRoute({
+            method: 'post',
+            path: '/path',
+            validate: {
+                type: 'json',
+                body: bodySchema,
+                params: paramsSchema,
+                query: querySchema,
+                headers: headersSchema,
+            },
+            handler,
+        });
+
+        app.use(router.middleware());
+
+        await request
+            .post('/path')
+            .send({})
+            .expect('Content-Type', /json/)
+            .expect(400)
+            .then((response) => {
+                expect(response.body.code).toBe(400);
+
+                expect(handler).not.toHaveBeenCalled();
+            });
+    });
 });
