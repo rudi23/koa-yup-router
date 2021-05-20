@@ -92,7 +92,7 @@ export type RouteConfig<
     BodyT = DefaultBody,
     HeadersT = DefaultHeaders,
     StateT = DefaultState,
-    ContextT = DefaultState
+    ContextT = DefaultContext
 > = {
     preHandler?:
         | Handler<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>
@@ -113,7 +113,7 @@ export type RouteSpecification<
     BodyT = DefaultBody,
     HeadersT = DefaultHeaders,
     StateT = DefaultState,
-    ContextT = DefaultState
+    ContextT = DefaultContext
 > = {
     preHandlers: Handler<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>[];
     validate: ValidateConfig;
@@ -130,7 +130,7 @@ export type RouterParameterizedContext<
     BodyT = DefaultBody,
     HeadersT = DefaultHeaders,
     StateT = DefaultState,
-    ContextT = DefaultState
+    ContextT = DefaultContext
 > = Koa.ParameterizedContext<StateT, ContextT> & {
     params: ParamsT;
     request: Koa.Request & { query: QueryT; body: BodyT; header: HeadersT; headers: HeadersT };
@@ -145,7 +145,7 @@ export type RouterContext<
     BodyT = DefaultBody,
     HeadersT = DefaultHeaders,
     StateT = DefaultState,
-    ContextT = DefaultState
+    ContextT = DefaultContext
 > = RouterParameterizedContext<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>;
 
 export type RouterMiddleware<
@@ -154,5 +154,5 @@ export type RouterMiddleware<
     BodyT = DefaultBody,
     HeadersT = DefaultHeaders,
     StateT = DefaultState,
-    ContextT = DefaultState
+    ContextT = DefaultContext
 > = Koa.Middleware<StateT, ContextT & RouterParameterizedContext<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>>;
