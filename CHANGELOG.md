@@ -1,3 +1,10 @@
+### [1.0.6](https://github.com/rudi23/koa-yup-router/compare/v1.0.5...v1.0.6) (2021-05-20)
+
+### Bug Fixes
+
+-   build type error ([cf1207e](https://github.com/rudi23/koa-yup-router/commit/cf1207e77d0e2b3a4bb43809528b3d6958019563))
+-   invalid default context ([03e7254](https://github.com/rudi23/koa-yup-router/commit/03e7254b60ef985fc66cf881054ecfe60fab4923))
+
 ### [1.0.5](https://github.com/rudi23/koa-yup-router/compare/v1.0.4...v1.0.5) (2021-05-20)
 
 ### Bug Fixes
