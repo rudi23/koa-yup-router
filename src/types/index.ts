@@ -46,8 +46,8 @@ export type DefaultParams = Record<string, any>;
 export type DefaultQuery = ParsedUrlQuery;
 export type DefaultBody = unknown;
 export type DefaultHeaders = IncomingHttpHeaders;
-export type DefaultState = any;
-export type DefaultContext = Record<string, any>;
+export type DefaultState = Koa.DefaultState;
+export type DefaultContext = Koa.DefaultContext;
 
 export type Handler<
     ParamsT = DefaultParams,
