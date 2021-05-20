@@ -1,3 +1,11 @@
+### [1.0.5](https://github.com/rudi23/koa-yup-router/compare/v1.0.4...v1.0.5) (2021-05-20)
+
+### Bug Fixes
+
+-   do not run handler when there is a validation error ([d62ccea](https://github.com/rudi23/koa-yup-router/commit/d62ccea866a6a3b674d68082fb5e0d42363768f5))
+-   improve types of nested handlers ([0bda437](https://github.com/rudi23/koa-yup-router/commit/0bda437f4631f6221194e025ec3908531ba6c259))
+-   improve types, handle custom state and context ([f6dc800](https://github.com/rudi23/koa-yup-router/commit/f6dc800652557cbffad45bed2784903cfd1062ab))
+
 ### [1.0.4](https://github.com/rudi23/koa-yup-router/compare/v1.0.3...v1.0.4) (2021-04-15)
 
 ### Bug Fixes
