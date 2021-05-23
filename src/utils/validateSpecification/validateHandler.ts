@@ -5,7 +5,7 @@ import type {
     DefaultParams,
     DefaultQuery,
     DefaultState,
-    Handler,
+    Middleware,
     RouteConfig,
 } from '../../types';
 import isHandlerSupportedFunction from './isHandlerSupportedFunction';
@@ -19,7 +19,7 @@ export default function validateHandler<
     ContextT = DefaultContext
 >(
     handler: RouteConfig<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>['handler']
-): Handler<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>[] {
+): Middleware<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>[] {
     if (!handler) {
         throw new Error('Missing route handlers');
     }

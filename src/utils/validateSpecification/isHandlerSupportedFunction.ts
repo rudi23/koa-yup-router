@@ -3,7 +3,7 @@ import type {
     DefaultHeaders,
     DefaultParams,
     DefaultQuery,
-    Handler,
+    Middleware,
     DefaultContext,
     DefaultState,
 } from '../../types';
@@ -16,8 +16,8 @@ export default function isHandlerSupportedFunction<
     StateT = DefaultState,
     ContextT = DefaultContext
 >(
-    handler: Handler<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>
-): Handler<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT> {
+    handler: Middleware<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>
+): Middleware<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT> {
     if (typeof handler !== 'function') {
         throw new Error('Route handler must be a function');
     }

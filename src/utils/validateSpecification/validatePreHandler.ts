@@ -3,7 +3,7 @@ import type {
     DefaultHeaders,
     DefaultParams,
     DefaultQuery,
-    Handler,
+    Middleware,
     RouteConfig,
     DefaultContext,
     DefaultState,
@@ -19,7 +19,7 @@ export default function validatePreHandler<
     ContextT = DefaultContext
 >(
     preHandler: RouteConfig<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>['preHandler']
-): Handler<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>[] {
+): Middleware<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>[] {
     if (!preHandler) {
         return [];
     }

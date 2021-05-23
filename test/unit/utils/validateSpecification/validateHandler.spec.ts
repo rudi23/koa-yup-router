@@ -1,7 +1,7 @@
 import validateHandler from '@src/utils/validateSpecification/validateHandler';
 import isHandlerSupportedFunction from '@src/utils/validateSpecification/isHandlerSupportedFunction';
 import validatePreHandler from '@src/utils/validateSpecification/validatePreHandler';
-import type { Handler } from '@src/types';
+import type { Middleware } from '@src/types';
 
 jest.mock('@src/utils/validateSpecification/isHandlerSupportedFunction');
 
@@ -13,7 +13,7 @@ const fn = () => {};
 
 describe('utils/validateSpecification/validateHandler', () => {
     it('throws error when config.handlers is not defined', () => {
-        expect(() => validateHandler((undefined as unknown) as Handler)).toThrow('Missing route handlers');
+        expect(() => validateHandler((undefined as unknown) as Middleware)).toThrow('Missing route handlers');
     });
 
     it('checks if handler is supported function', () => {

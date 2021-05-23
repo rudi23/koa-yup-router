@@ -3,7 +3,7 @@ import supertest from 'supertest';
 import type { TypeOf } from 'yup';
 import { paramsSchema, querySchema, bodySchema, headersSchema } from './schema';
 import YupRouter from '@src/index';
-import type { RouterMiddleware, RouterContext } from '@src/types';
+import type { Middleware, RouterContext } from '@src/types';
 
 type ParamsT = TypeOf<typeof paramsSchema>;
 type QueryT = TypeOf<typeof querySchema>;
@@ -50,7 +50,11 @@ describe('defining route', () => {
 
     // eslint-disable-next-line jest/expect-expect
     it('should add route with handler separately defined as RouterMiddleware', async () => {
-        const handler: RouterMiddleware<ParamsT, QueryT, BodyT, HeadersT> = (ctx) => {
+        const koaMiddleware: Koa.Middleware = async (_ctx, next) => {
+            await next();
+        };
+
+        const handler: Middleware<ParamsT, QueryT, BodyT, HeadersT> = (ctx) => {
             ctx.body = {
                 id: ctx.params.id,
                 search: ctx.request.query.search,
@@ -72,7 +76,7 @@ describe('defining route', () => {
                 query: querySchema,
                 headers: headersSchema,
             },
-            handler,
+            handler: [koaMiddleware, handler],
         });
 
         app.use(router.middleware());
@@ -116,6 +120,10 @@ describe('defining route', () => {
     it('should add route with generic type declaration', async () => {
         const router = new YupRouter();
 
+        const koaMiddleware: Koa.Middleware = async (_ctx, next) => {
+            await next();
+        };
+
         router.addRoute<ParamsT, QueryT, BodyT, HeadersT>({
             method: 'post',
             path: '/path/:id',
@@ -126,15 +134,18 @@ describe('defining route', () => {
                 query: querySchema,
                 headers: headersSchema,
             },
-            handler: (ctx) => {
-                ctx.body = {
-                    id: ctx.params.id,
-                    search: ctx.request.query.search,
-                    string: ctx.request.body.string,
-                    body: ctx.request.body,
-                    custom: ctx.request.headers.custom,
-                };
-            },
+            handler: [
+                koaMiddleware,
+                (ctx) => {
+                    ctx.body = {
+                        id: ctx.params.id,
+                        search: ctx.request.query.search,
+                        string: ctx.request.body.string,
+                        body: ctx.request.body,
+                        custom: ctx.request.headers.custom,
+                    };
+                },
+            ],
         });
 
         app.use(router.middleware());

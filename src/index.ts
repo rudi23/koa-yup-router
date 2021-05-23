@@ -1,5 +1,6 @@
 import delegate from 'delegates';
 import KoaRouter from '@koa/router';
+import type Koa from 'koa';
 import parseBody from './middlewares/parseBody';
 import exposeSpecification from './middlewares/exposeSpecification';
 import validate from './middlewares/validate';
@@ -15,7 +16,7 @@ import type {
     RouterOptions,
     DefaultState,
     DefaultContext,
-    RouterMiddleware,
+    Middleware,
 } from './types';
 import validatePreHandler from './utils/validateSpecification/validatePreHandler';
 
@@ -24,9 +25,9 @@ class YupRouter<StateRT = DefaultState, ContextRT = DefaultContext> extends KoaR
 
     router = new KoaRouter();
 
-    errorHandler = <RouterMiddleware>errorHandler;
+    errorHandler = <Middleware>errorHandler;
 
-    preHandlers = <RouterMiddleware[]>[];
+    preHandlers = <Middleware[]>[];
 
     constructor(options?: RouterOptions) {
         super();
@@ -85,7 +86,7 @@ class YupRouter<StateRT = DefaultState, ContextRT = DefaultContext> extends KoaR
             validate(spec),
             this.errorHandler,
             ...handlers,
-        ] as RouterMiddleware<ParamsT, QueryT, BodyT, HeadersT, StateT, any>[];
+        ] as Koa.Middleware[];
 
         const opts = name ? { name } : undefined;
 

@@ -21,8 +21,8 @@ declare module 'koa' {
 export type DeepArray<T> = Array<T | DeepArray<T>>;
 
 export interface RouterOptions extends KoaRouter.RouterOptions {
-    errorHandler?: Handler;
-    preHandler?: Handler | DeepArray<Handler>;
+    errorHandler?: Middleware;
+    preHandler?: Middleware | DeepArray<Middleware>;
 }
 
 export type MultipartBodyOptions = {
@@ -48,15 +48,6 @@ export type DefaultBody = unknown;
 export type DefaultHeaders = IncomingHttpHeaders;
 export type DefaultState = Koa.DefaultState;
 export type DefaultContext = Koa.DefaultContext;
-
-export type Handler<
-    ParamsT = DefaultParams,
-    QueryT = DefaultQuery,
-    BodyT = DefaultBody,
-    HeadersT = DefaultHeaders,
-    StateT = DefaultState,
-    ContextT = DefaultContext
-> = RouterMiddleware<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>;
 
 export type FormBodyOptions = CoBody.Options;
 export type JsonBodyOptions = CoBody.Options;
@@ -95,16 +86,16 @@ export type RouteConfig<
     ContextT = DefaultContext
 > = {
     preHandler?:
-        | Handler<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>
-        | DeepArray<Handler<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>>;
+        | Middleware<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>
+        | DeepArray<Middleware<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>>;
     validate?: ValidateConfig;
     meta?: any;
     name?: string;
     method: string | string[];
     path: string | RegExp;
     handler:
-        | Handler<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>
-        | DeepArray<Handler<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>>;
+        | Middleware<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>
+        | DeepArray<Middleware<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>>;
 };
 
 export type RouteSpecification<
@@ -115,23 +106,23 @@ export type RouteSpecification<
     StateT = DefaultState,
     ContextT = DefaultContext
 > = {
-    preHandlers: Handler<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>[];
+    preHandlers: Middleware<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>[];
     validate: ValidateConfig;
     meta?: any;
     name?: string;
     methods: string[];
     path: string | RegExp;
-    handlers: Handler<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>[];
+    handlers: Middleware<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>[];
 };
 
-export type RouterParameterizedContext<
+export type RouterParamContext<
     ParamsT = DefaultParams,
     QueryT = DefaultQuery,
     BodyT = DefaultBody,
     HeadersT = DefaultHeaders,
     StateT = DefaultState,
     ContextT = DefaultContext
-> = Koa.ParameterizedContext<StateT, ContextT> & {
+> = {
     params: ParamsT;
     request: Koa.Request & { query: QueryT; body: BodyT; header: HeadersT; headers: HeadersT };
     router: YupRouter<StateT, ContextT>;
@@ -146,13 +137,37 @@ export type RouterContext<
     HeadersT = DefaultHeaders,
     StateT = DefaultState,
     ContextT = DefaultContext
-> = RouterParameterizedContext<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>;
+> = Koa.ParameterizedContext<StateT, ContextT & RouterParamContext<ParamsT, QueryT, BodyT, HeadersT>>;
 
-export type RouterMiddleware<
+export type Middleware<
     ParamsT = DefaultParams,
     QueryT = DefaultQuery,
     BodyT = DefaultBody,
     HeadersT = DefaultHeaders,
     StateT = DefaultState,
     ContextT = DefaultContext
-> = Koa.Middleware<StateT, ContextT & RouterParameterizedContext<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>>;
+> = Koa.Middleware<StateT, ContextT & RouterParamContext<ParamsT, QueryT, BodyT, HeadersT>>;
+
+/**
+ * @deprecated use Middleware instead
+ */
+export type Handler<
+    ParamsT = DefaultParams,
+    QueryT = DefaultQuery,
+    BodyT = DefaultBody,
+    HeadersT = DefaultHeaders,
+    StateT = DefaultState,
+    ContextT = DefaultContext
+> = Middleware<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>;
+
+/**
+ * @deprecated use RouterParamContext instead
+ */
+export type RouterParametrizedContext<
+    ParamsT = DefaultParams,
+    QueryT = DefaultQuery,
+    BodyT = DefaultBody,
+    HeadersT = DefaultHeaders,
+    StateT = DefaultState,
+    ContextT = DefaultContext
+> = RouterParamContext<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>;
