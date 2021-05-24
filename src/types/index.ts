@@ -1,8 +1,6 @@
 /* eslint-disable no-use-before-define */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import type { ParsedUrlQuery } from 'querystring';
-import type { IncomingHttpHeaders } from 'http';
 import type CoBody from 'co-body';
 import type * as Koa from 'koa';
 import type * as Yup from 'yup';
@@ -42,10 +40,10 @@ export type MultipartBodyOptions = {
     };
 };
 
-export type DefaultParams = Record<string, any>;
-export type DefaultQuery = ParsedUrlQuery;
-export type DefaultBody = unknown;
-export type DefaultHeaders = IncomingHttpHeaders;
+export type DefaultParams = any;
+export type DefaultQuery = any;
+export type DefaultBody = any;
+export type DefaultHeaders = any;
 export type DefaultState = Koa.DefaultState;
 export type DefaultContext = Koa.DefaultContext;
 

@@ -86,7 +86,11 @@ describe('defining route', () => {
 
     // eslint-disable-next-line jest/expect-expect
     it('should add route with handler separately defined with RouterContext', async () => {
-        function handler(ctx: RouterContext<ParamsT, QueryT, BodyT, HeadersT>) {
+        const koaMiddleware: Koa.Middleware = async (_ctx, next) => {
+            await next();
+        };
+
+        const handler = (ctx: RouterContext<ParamsT, QueryT, BodyT, HeadersT>) => {
             ctx.body = {
                 id: ctx.params.id,
                 search: ctx.request.query.search,
@@ -94,7 +98,7 @@ describe('defining route', () => {
                 body: ctx.request.body,
                 custom: ctx.request.headers.custom,
             };
-        }
+        };
 
         const router = new YupRouter();
 
@@ -108,7 +112,7 @@ describe('defining route', () => {
                 query: querySchema,
                 headers: headersSchema,
             },
-            handler,
+            handler: [koaMiddleware, handler],
         });
 
         app.use(router.middleware());
@@ -171,7 +175,7 @@ describe('defining route', () => {
                 ctx.body = {
                     id: ctx.params.id,
                     search: ctx.request.query.search,
-                    string: (ctx.request.body as any).string,
+                    string: ctx.request.body.string,
                     body: ctx.request.body,
                     custom: ctx.request.headers.custom,
                 };
@@ -201,7 +205,7 @@ describe('defining route', () => {
                 ctx.body = {
                     id: ctx.params.id,
                     search: ctx.request.query.search,
-                    string: (ctx.request.body as any).string,
+                    string: ctx.request.body.string,
                     body: ctx.request.body,
                     custom: ctx.request.headers.custom,
                 };
