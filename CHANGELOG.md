@@ -1,3 +1,9 @@
+### [1.0.9](https://github.com/rudi23/koa-yup-router/compare/v1.0.8...v1.0.9) (2021-05-24)
+
+### Code Refactoring
+
+-   refactor types ([fac585b](https://github.com/rudi23/koa-yup-router/commit/fac585bc42cff5cd2eca926eb63e05d0b8cc0655))
+
 ### [1.0.8](https://github.com/rudi23/koa-yup-router/compare/v1.0.7...v1.0.8) (2021-05-23)
 
 ### Code Refactoring
