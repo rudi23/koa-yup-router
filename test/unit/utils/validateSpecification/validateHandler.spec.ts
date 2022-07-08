@@ -13,7 +13,7 @@ const fn = () => {};
 
 describe('utils/validateSpecification/validateHandler', () => {
     it('throws error when config.handlers is not defined', () => {
-        expect(() => validateHandler((undefined as unknown) as Middleware)).toThrow('Missing route handlers');
+        expect(() => validateHandler(undefined as unknown as Middleware)).toThrow('Missing route handlers');
     });
 
     it('checks if handler is supported function', () => {
@@ -22,14 +22,7 @@ describe('utils/validateSpecification/validateHandler', () => {
     });
 
     it('checks if nested handler is supported function', () => {
-        validatePreHandler([[[fn]]]);
+        validatePreHandler([fn]);
         expect(mockIsHandlerSupportedFunction).toHaveBeenCalledWith(fn);
-    });
-
-    it('returns flat handlers', () => {
-        const handlers = validateHandler([[[fn]], fn]);
-        expect(handlers).toHaveLength(2);
-        expect(handlers[0]).toBeInstanceOf(Function);
-        expect(handlers[1]).toBeInstanceOf(Function);
     });
 });

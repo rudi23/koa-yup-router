@@ -1,5 +1,6 @@
 import type Koa from 'koa';
 import type { ObjectSchema } from 'yup';
+import * as yup from 'yup';
 import captureError from '../utils/captureError';
 import { inputParts } from '../types/constants';
 import type {
@@ -70,7 +71,11 @@ export default function createValidate<
             try {
                 validateInput(ctx, inputPart, schema);
             } catch (err) {
-                captureError(ctx, inputPart, err);
+                if (err instanceof yup.ValidationError) {
+                    captureError(ctx, inputPart, err);
+                } else {
+                    throw err;
+                }
             }
         });
 

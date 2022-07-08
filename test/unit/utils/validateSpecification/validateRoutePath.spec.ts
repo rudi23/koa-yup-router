@@ -2,7 +2,7 @@ import validateRoutePath from '@src/utils/validateSpecification/validateRoutePat
 
 describe('utils/validateSpecification/validateRoutePath', () => {
     it('throws error when path is not string', () => {
-        expect(() => validateRoutePath((1 as unknown) as string)).toThrow('Invalid route path');
+        expect(() => validateRoutePath(1 as unknown as string)).toThrow('Invalid route path');
     });
 
     it('returns path when path is RegExp', () => {

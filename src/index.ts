@@ -32,6 +32,7 @@ class YupRouter<StateRT = DefaultState, ContextRT = DefaultContext> extends KoaR
     constructor(options?: RouterOptions) {
         super();
         if (!(this instanceof YupRouter)) {
+            // eslint-disable-next-line no-constructor-return
             return new YupRouter<StateRT, ContextRT>(options);
         }
 

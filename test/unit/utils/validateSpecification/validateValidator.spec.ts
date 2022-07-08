@@ -18,7 +18,7 @@ describe('utils/validateSpecification/validateValidator', () => {
     it('throws error when validate.type is invalid', () => {
         expect(() =>
             validateValidator({
-                type: ('invalid' as unknown) as ValidateConfig['type'],
+                type: 'invalid' as unknown as ValidateConfig['type'],
             })
         ).toThrow('validate.type must be either json, form, multipart or stream');
     });
@@ -26,7 +26,7 @@ describe('utils/validateSpecification/validateValidator', () => {
     it('throws error when validate.body is not yup.object', () => {
         expect(() =>
             validateValidator({
-                body: ({} as unknown) as yup.ObjectSchema<any>,
+                body: {} as unknown as yup.ObjectSchema<any>,
             })
         ).toThrow('validate.body must be instance of yup.object');
     });
@@ -34,7 +34,7 @@ describe('utils/validateSpecification/validateValidator', () => {
     it('throws error when validate.params is not yup.object', () => {
         expect(() =>
             validateValidator({
-                params: ({} as unknown) as yup.ObjectSchema<any>,
+                params: {} as unknown as yup.ObjectSchema<any>,
             })
         ).toThrow('validate.params must be instance of yup.object');
     });
@@ -42,7 +42,7 @@ describe('utils/validateSpecification/validateValidator', () => {
     it('throws error when validate.query is not yup.object', () => {
         expect(() =>
             validateValidator({
-                query: ({} as unknown) as yup.ObjectSchema<any>,
+                query: {} as unknown as yup.ObjectSchema<any>,
             })
         ).toThrow('validate.query must be instance of yup.object');
     });
@@ -50,7 +50,7 @@ describe('utils/validateSpecification/validateValidator', () => {
     it('throws error when validate.headers is not yup.object', () => {
         expect(() =>
             validateValidator({
-                headers: ({} as unknown) as yup.ObjectSchema<any>,
+                headers: {} as unknown as yup.ObjectSchema<any>,
             })
         ).toThrow('validate.headers must be instance of yup.object');
     });

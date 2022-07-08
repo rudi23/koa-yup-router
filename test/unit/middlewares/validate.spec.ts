@@ -1,5 +1,6 @@
 import type { ObjectSchema } from 'yup';
 import type Koa from 'koa';
+import * as yup from 'yup';
 import { valueOfType } from '../../utils';
 import createValidate from '@src/middlewares/validate';
 import captureError from '@src/utils/captureError';
@@ -16,7 +17,7 @@ const createMockSchema = (output: any) => ({
 });
 const createMockSchemaWithError = () => ({
     validateSync: jest.fn().mockImplementation(() => {
-        throw Error('Invalid data');
+        throw new yup.ValidationError('Invalid data');
     }),
 });
 
@@ -74,10 +75,10 @@ describe('middleware/validate', () => {
             handlers: [],
             path: '/path',
             validate: {
-                params: (mockParamsSchema as unknown) as ObjectSchema<any>,
-                query: (mockQuerySchema as unknown) as ObjectSchema<any>,
-                headers: (mockHeadersSchema as unknown) as ObjectSchema<any>,
-                body: (mockBodySchema as unknown) as ObjectSchema<any>,
+                params: mockParamsSchema as unknown as ObjectSchema<any>,
+                query: mockQuerySchema as unknown as ObjectSchema<any>,
+                headers: mockHeadersSchema as unknown as ObjectSchema<any>,
+                body: mockBodySchema as unknown as ObjectSchema<any>,
             },
         })(context, next);
 
@@ -111,7 +112,7 @@ describe('middleware/validate', () => {
             handlers: [],
             path: '/path',
             validate: {
-                query: (mockQuerySchema as unknown) as ObjectSchema<any>,
+                query: mockQuerySchema as unknown as ObjectSchema<any>,
             },
         })(context, next);
 
@@ -139,7 +140,7 @@ describe('middleware/validate', () => {
             handlers: [],
             path: '/path',
             validate: {
-                query: (mockQuerySchema as unknown) as ObjectSchema<any>,
+                query: mockQuerySchema as unknown as ObjectSchema<any>,
             },
         })(context, next);
 
@@ -150,34 +151,28 @@ describe('middleware/validate', () => {
                 },
             },
             'query',
-            new Error('Invalid data')
+            new yup.ValidationError('Invalid data')
         );
     });
 
-    test('should capture error when unknown input part is defined', async () => {
+    test('should throw error when unknown input part is defined', async () => {
         mockInputParts.mockReturnValue(['invalid']);
 
         const context = valueOfType<Koa.Context>({ request: { invalid: { foo: 'bar' } } });
         const mockQuerySchema = createMockSchema({});
 
-        await createValidate({
-            preHandlers: [],
-            methods: [],
-            handlers: [],
-            path: '/path',
-            validate: ({
-                invalid: (mockQuerySchema as unknown) as ObjectSchema<any>,
-            } as unknown) as ValidateConfig,
-        })(context, next);
+        async function createValidateWrapper() {
+            await createValidate({
+                preHandlers: [],
+                methods: [],
+                handlers: [],
+                path: '/path',
+                validate: {
+                    invalid: mockQuerySchema as unknown as ObjectSchema<any>,
+                } as unknown as ValidateConfig,
+            })(context, next);
+        }
 
-        expect(mockCaptureError).toHaveBeenCalledWith(
-            {
-                request: {
-                    invalid: { foo: 'bar' },
-                },
-            },
-            'invalid',
-            new Error('Unknown input part')
-        );
+        await expect(createValidateWrapper()).rejects.toThrow('Unknown input part');
     });
 });

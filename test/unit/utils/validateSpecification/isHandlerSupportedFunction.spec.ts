@@ -3,12 +3,12 @@ import type { Middleware } from '@src/types';
 
 describe('utils/validateSpecification/isHandlerSupportedFunction', () => {
     it('throws error when handler is not defined', () => {
-        expect(() => isHandlerSupportedFunction((undefined as unknown) as Middleware)).toThrow(
+        expect(() => isHandlerSupportedFunction(undefined as unknown as Middleware)).toThrow(
             'Route handler must be a function'
         );
     });
     it('throws error when handler is string', () => {
-        expect(() => isHandlerSupportedFunction(('invalid handler' as unknown) as Middleware)).toThrow(
+        expect(() => isHandlerSupportedFunction('invalid handler' as unknown as Middleware)).toThrow(
             'Route handler must be a function'
         );
     });

@@ -16,11 +16,9 @@ declare module 'koa' {
     }
 }
 
-export type DeepArray<T> = Array<T | DeepArray<T>>;
-
 export interface RouterOptions extends KoaRouter.RouterOptions {
     errorHandler?: Middleware;
-    preHandler?: Middleware | DeepArray<Middleware>;
+    preHandler?: Middleware | Array<Middleware>;
 }
 
 export type MultipartBodyOptions = {
@@ -85,7 +83,7 @@ export type RouteConfig<
 > = {
     preHandler?:
         | Middleware<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>
-        | DeepArray<Middleware<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>>;
+        | Array<Middleware<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>>;
     validate?: ValidateConfig;
     meta?: any;
     name?: string;
@@ -93,7 +91,7 @@ export type RouteConfig<
     path: string | RegExp;
     handler:
         | Middleware<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>
-        | DeepArray<Middleware<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>>;
+        | Array<Middleware<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>>;
 };
 
 export type RouteSpecification<

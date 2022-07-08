@@ -48,8 +48,12 @@ export default function createParseBody<
     return async function parseBodyWithErrorHandler(ctx: Koa.Context, next: Koa.Next): Promise<void> {
         try {
             await parseBody(ctx, next);
-        } catch (err) {
-            captureError(ctx, 'type', new yup.ValidationError(err.message));
+        } catch (err: unknown) {
+            if (err instanceof Error) {
+                captureError(ctx, 'type', new yup.ValidationError(err?.message));
+            } else {
+                throw err;
+            }
         }
 
         await next();

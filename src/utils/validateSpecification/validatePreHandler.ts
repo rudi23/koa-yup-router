@@ -25,6 +25,6 @@ export default function validatePreHandler<
     }
 
     return [preHandler]
-        .flat(Infinity)
+        .flat()
         .map((fn) => isHandlerSupportedFunction<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>(fn));
 }
