@@ -1,3 +1,21 @@
+## [2.0.0](https://github.com/rudi23/koa-yup-router/compare/v1.0.9...v2.0.0) (2022-07-08)
+
+### Features
+
+-   require node >= 12 **BREAKING CHANGE** ([6e3a438](https://github.com/rudi23/koa-yup-router/commit/6e3a438b8edfe8ef6dd2a8bb4eecfa51074abafb))
+
+### Bug Fixes
+
+-   fix release script ([4d27e71](https://github.com/rudi23/koa-yup-router/commit/4d27e71d6c632324587292b0e49ae19f4562211f))
+
+### Documentation
+
+-   fix typo ([0796000](https://github.com/rudi23/koa-yup-router/commit/07960003a2214c7ff59d0dc091c2a0b010370c7e))
+
+### Miscellaneous Chores
+
+-   test with github actions ([#1](https://github.com/rudi23/koa-yup-router/issues/1)) ([f3a5f07](https://github.com/rudi23/koa-yup-router/commit/f3a5f072015818c19bda59871de7db16c5e6bd5a))
+
 ### [1.0.9](https://github.com/rudi23/koa-yup-router/compare/v1.0.8...v1.0.9) (2021-05-24)
 
 ### Code Refactoring
