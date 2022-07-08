@@ -1,3 +1,13 @@
+## [2.0.1](https://github.com/rudi23/koa-yup-router/compare/v2.0.0...v2.0.1) (2022-07-08)
+
+### Miscellaneous Chores
+
+-   fix CHANGELOG.md ([2b044f6](https://github.com/rudi23/koa-yup-router/commit/2b044f6cedad407b11f7cdf888e325a87e4a5d29))
+
+### Documentation
+
+-   fix required version of Node ([dfb487d](https://github.com/rudi23/koa-yup-router/commit/dfb487d32f6299e461e3937a809df0866b35dd4f))
+
 ## [2.0.0](https://github.com/rudi23/koa-yup-router/compare/v1.0.9...v2.0.0) (2022-07-08)
 
 ### Features
