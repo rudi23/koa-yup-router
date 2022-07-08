@@ -55,7 +55,7 @@ const querySchema = yup.object({
 });
 
 const bodySchema = yup.object({
-    firstName: yupstring().required(),
+    firstName: yup.string().required(),
     lastName: yup.number().required(),
     age: yup.number().required().min(0).max(100),
     job: yup.string(),
@@ -108,7 +108,7 @@ const querySchema = yup.object({
 });
 
 const bodySchema = yup.object({
-    firstName: yupstring().required(),
+    firstName: yup.string().required(),
     lastName: yup.number().required(),
     age: yup.number().required().min(0).max(100),
     job: yup.string(),
