@@ -23,7 +23,7 @@ Install using [`npm`][npm-url]:
 npm install @rudi23/koa-yup-router
 ```
 
-NodeJS `>= 8.0.0.` is required.
+NodeJS `>= 12.0.0.` is required.
 
 ### Features
 
