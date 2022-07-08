@@ -3,10 +3,12 @@
 ### Features
 
 -   require node >= 12 **BREAKING CHANGE** ([6e3a438](https://github.com/rudi23/koa-yup-router/commit/6e3a438b8edfe8ef6dd2a8bb4eecfa51074abafb))
+-   remove deep array prehandlers/handlers support **BREAKING CHANGE** ([6e3a438](https://github.com/rudi23/koa-yup-router/commit/6e3a438b8edfe8ef6dd2a8bb4eecfa51074abafb))
 
 ### Bug Fixes
 
 -   fix release script ([4d27e71](https://github.com/rudi23/koa-yup-router/commit/4d27e71d6c632324587292b0e49ae19f4562211f))
+-   throw error if invalid input type is provided **BREAKING CHANGE** ([6e3a438](https://github.com/rudi23/koa-yup-router/commit/6e3a438b8edfe8ef6dd2a8bb4eecfa51074abafb))
 
 ### Documentation
 
