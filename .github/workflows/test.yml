@@ -16,7 +16,7 @@ jobs:
           check-latest: true
       - run: npm ci --quiet
       - run: npm run lint
-  test:
+  typecheck-and-test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -29,4 +29,6 @@ jobs:
           node-version: ${{ matrix.node }}
           check-latest: true
       - run: npm ci --quiet
-      - run: npm test
+      - run: npm run typecheck
+      - run: npm test:ci:unit
+      - run: npm test:ci:integration
