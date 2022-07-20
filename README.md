@@ -37,14 +37,15 @@ NodeJS `>= 12.0.0.` is required.
 -   custom error handler
 -   exposed route definitions
 -   meta data support
+-   supports both: CommonJs and ES Modules
 
 ### Example
 
 ##### Typescript
 
 ```ts
-import koa from 'koa';
-import router from '@rudi23/koa-yup-router';
+import Koa from 'koa';
+import YupRouter from '@rudi23/koa-yup-router';
 
 const paramsSchema = yup.object({
     id: yup.number().required(),
@@ -93,11 +94,62 @@ app.use(router.middleware());
 app.listen(3000);
 ```
 
-##### Javascript
+##### Javascript - CommonJS
 
 ```js
-const koa = require('koa');
-const router = require('@rudi23/koa-yup-router');
+const Koa = require('koa');
+const YupRouter = require('@rudi23/koa-yup-router');
+
+const paramsSchema = yup.object({
+    id: yup.number().required(),
+});
+
+const querySchema = yup.object({
+    force: yup.boolean(),
+});
+
+const bodySchema = yup.object({
+    firstName: yup.string().required(),
+    lastName: yup.number().required(),
+    age: yup.number().required().min(0).max(100),
+    job: yup.string(),
+});
+
+const router = new YupRouter();
+
+router.get('/', (ctx, next) => {
+    ctx.body = 'Hello koa-yup-router!';
+});
+
+router.addRoute({
+    method: 'put',
+    path: '/user/:id',
+    validate: {
+        type: 'json',
+        body: bodySchema,
+        params: paramsSchema,
+        query: querySchema,
+    },
+    handler: (ctx) => {
+        ctx.body = {
+            params: ctx.params,
+            query: ctx.request.query,
+            body: ctx.request.body,
+            headers: ctx.request.headers,
+        };
+    },
+});
+
+const app = new Koa();
+app.use(router.middleware());
+app.listen(3000);
+```
+
+##### Javascript - ES Modules
+
+```js
+import Koa from 'koa';
+import YupRouter from '@rudi23/koa-yup-router';
 
 const paramsSchema = yup.object({
     id: yup.number().required(),
