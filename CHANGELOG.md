@@ -1,3 +1,9 @@
+## [2.1.1](https://github.com/rudi23/koa-yup-router/compare/v2.1.0...v2.1.1) (2022-07-20)
+
+### Bug Fixes
+
+-   export missing types ([3cb9b6b](https://github.com/rudi23/koa-yup-router/commit/3cb9b6b2c0847dcc3117f54e1b57b7cedad94e33))
+
 ## [2.1.0](https://github.com/rudi23/koa-yup-router/compare/v2.0.1...v2.1.0) (2022-07-20)
 
 ### Features
