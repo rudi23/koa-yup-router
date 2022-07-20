@@ -95,6 +95,8 @@ class YupRouter<StateRT = DefaultState, ContextRT = DefaultContext> extends KoaR
     }
 }
 
+export * from './types/index.js';
+
 export default YupRouter;
 
 export { YupRouter };
