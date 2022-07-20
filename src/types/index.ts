@@ -56,12 +56,19 @@ export type ValidateConfigBase = {
     [K in ValidationType]?: ValidationSchema;
 };
 
+export type OutputSchema = {
+    body?: { [contentType: string]: Yup.AnySchema } | Yup.AnySchema;
+    headers?: { [contentType: string]: { schema: Yup.AnySchema; description?: string } };
+    description?: string;
+};
+
 export type ValidateConfig = ValidateConfigBase & {
     maxBody?: number;
     type?: InputType;
     formOptions?: FormBodyOptions;
     jsonOptions?: JsonBodyOptions;
     multipartOptions?: MultipartBodyOptions;
+    output?: { [status: string]: OutputSchema };
 };
 
 export type ValidationErrors = {
