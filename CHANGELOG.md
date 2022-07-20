@@ -1,3 +1,47 @@
+## [2.1.0](https://github.com/rudi23/koa-yup-router/compare/v2.0.1...v2.1.0) (2022-07-20)
+
+### Features
+
+-   move to esm with build supporting commonjs ([#27](https://github.com/rudi23/koa-yup-router/issues/27)) ([63060f4](https://github.com/rudi23/koa-yup-router/commit/63060f4f9ad1bd661aacae7ef52e74915032c970))
+
+### Bug Fixes
+
+-   add test:build script ([1c6a0b8](https://github.com/rudi23/koa-yup-router/commit/1c6a0b815fd747b21dc16d46fde655b7ebe9cc54))
+-   **deps:** update dependency @koa/router to v12 ([#24](https://github.com/rudi23/koa-yup-router/issues/24)) ([8118be3](https://github.com/rudi23/koa-yup-router/commit/8118be3301cbc2bd163c7ed98303a263ec428631))
+-   rename release-it config to cjs ([321541d](https://github.com/rudi23/koa-yup-router/commit/321541d9777e4d659a30579909205116f3028643))
+
+### Documentation
+
+-   update docs ([c1171a9](https://github.com/rudi23/koa-yup-router/commit/c1171a93a981373f2cad9183fa6313d03507e5e3))
+
+### Miscellaneous Chores
+
+-   add renovate config ([28a6d9d](https://github.com/rudi23/koa-yup-router/commit/28a6d9dda8dde59ad879807dc0de6900b91445e5))
+-   change release-it configuration ([bf47de3](https://github.com/rudi23/koa-yup-router/commit/bf47de3a3ab5a6b95013f2429a39030db982e539))
+-   **deps:** pin dependencies ([#3](https://github.com/rudi23/koa-yup-router/issues/3)) ([e5825c5](https://github.com/rudi23/koa-yup-router/commit/e5825c592337be4955c3c3ef903ed87a19cccd7a))
+-   **deps:** pin dependencies ([#4](https://github.com/rudi23/koa-yup-router/issues/4)) ([483d162](https://github.com/rudi23/koa-yup-router/commit/483d162a5bd844428591cb711d5678171352533e))
+-   **deps:** pin dependencies ([#6](https://github.com/rudi23/koa-yup-router/issues/6)) ([f20fe57](https://github.com/rudi23/koa-yup-router/commit/f20fe5797c15e9ad6ac8c4c26c4d5d0d2375d5e1))
+-   **deps:** pin dependencies ([#7](https://github.com/rudi23/koa-yup-router/issues/7)) ([3aac794](https://github.com/rudi23/koa-yup-router/commit/3aac794d898101c7ea90b57f16507fcbaf463f12))
+-   **deps:** pin dependencies ([#8](https://github.com/rudi23/koa-yup-router/issues/8)) ([e5b3377](https://github.com/rudi23/koa-yup-router/commit/e5b33779dc3c1cf0786d25d7908f01aed5af71a0))
+-   **deps:** update dependency @types/jest to v28.1.5 ([#12](https://github.com/rudi23/koa-yup-router/issues/12)) ([dd1677c](https://github.com/rudi23/koa-yup-router/commit/dd1677cc6ce6c2458ba9ce0559c1a306a4d6063d))
+-   **deps:** update dependency @types/jest to v28.1.6 ([#18](https://github.com/rudi23/koa-yup-router/issues/18)) ([18f567f](https://github.com/rudi23/koa-yup-router/commit/18f567f94fb97a601dc9268b2ed6b2e5256a68fc))
+-   **deps:** update dependency eslint to v8.20.0 ([#21](https://github.com/rudi23/koa-yup-router/issues/21)) ([9ffba92](https://github.com/rudi23/koa-yup-router/commit/9ffba92acaba3797ce2f622607c6e85b7d0e89a2))
+-   **deps:** update dependency eslint-import-resolver-typescript to v3.2.5 ([#9](https://github.com/rudi23/koa-yup-router/issues/9)) ([dd9128f](https://github.com/rudi23/koa-yup-router/commit/dd9128fd88404bff404c5108602270dacaeff32a))
+-   **deps:** update dependency eslint-import-resolver-typescript to v3.2.6 ([#17](https://github.com/rudi23/koa-yup-router/issues/17)) ([0ae409e](https://github.com/rudi23/koa-yup-router/commit/0ae409e82d5c3f6a2c2cba52da2d9355c00ee69c))
+-   **deps:** update dependency eslint-import-resolver-typescript to v3.2.7 ([#22](https://github.com/rudi23/koa-yup-router/issues/22)) ([bf29c69](https://github.com/rudi23/koa-yup-router/commit/bf29c697a020be5cf6e83b74d1a21a8fa43f2ef7))
+-   **deps:** update dependency eslint-import-resolver-typescript to v3.3.0 ([#25](https://github.com/rudi23/koa-yup-router/issues/25)) ([5d96866](https://github.com/rudi23/koa-yup-router/commit/5d96866c393950cd471fdb4966a832f596bfc361))
+-   **deps:** update dependency eslint-plugin-jest to v26.6.0 ([#16](https://github.com/rudi23/koa-yup-router/issues/16)) ([4c96689](https://github.com/rudi23/koa-yup-router/commit/4c96689ace9a552e8a77dae979cda7fb04306ab7))
+-   **deps:** update dependency jest to v28.1.3 ([#13](https://github.com/rudi23/koa-yup-router/issues/13)) ([13a992e](https://github.com/rudi23/koa-yup-router/commit/13a992e4d1b70f7cbc7538bd24c9198e5e2f61ad))
+-   **deps:** update dependency release-it to v15.1.2 ([#19](https://github.com/rudi23/koa-yup-router/issues/19)) ([73fa2f3](https://github.com/rudi23/koa-yup-router/commit/73fa2f33750a1123bfa1f4d74fd51ca941a9c8cb))
+-   **deps:** update dependency release-it to v15.1.3 ([#26](https://github.com/rudi23/koa-yup-router/issues/26)) ([3341c98](https://github.com/rudi23/koa-yup-router/commit/3341c9845b0a7c630a69e5204913b9221f3977a5))
+-   **deps:** update dependency ts-jest to v28.0.6 ([#15](https://github.com/rudi23/koa-yup-router/issues/15)) ([a27ccd9](https://github.com/rudi23/koa-yup-router/commit/a27ccd928d7cd8fde61c71a0c5ad194b4a78d910))
+-   **deps:** update dependency ts-jest to v28.0.7 ([#20](https://github.com/rudi23/koa-yup-router/issues/20)) ([7ee38af](https://github.com/rudi23/koa-yup-router/commit/7ee38af2e68724ba10911f590241a890a66b4955))
+-   **deps:** update dependency ts-node to v10.9.1 ([#14](https://github.com/rudi23/koa-yup-router/issues/14)) ([e974b52](https://github.com/rudi23/koa-yup-router/commit/e974b523c56c8b946bd89ebc9e44f7e1ecb1d535))
+-   **deps:** update linters to v5.30.6 ([#11](https://github.com/rudi23/koa-yup-router/issues/11)) ([da12f7e](https://github.com/rudi23/koa-yup-router/commit/da12f7e98cc5749e3cbd9d0311a37b804df02772))
+-   **deps:** update linters to v5.30.7 ([#23](https://github.com/rudi23/koa-yup-router/issues/23)) ([d8578de](https://github.com/rudi23/koa-yup-router/commit/d8578de8ce1540c5be68fdcf32935276cc30f970))
+-   improve test action ([#10](https://github.com/rudi23/koa-yup-router/issues/10)) ([0bcb66e](https://github.com/rudi23/koa-yup-router/commit/0bcb66ee94a0cbe663a3a121a5bd610ff5ceb1c5))
+-   set up codeql analysis ([bcaf43c](https://github.com/rudi23/koa-yup-router/commit/bcaf43c2ddfc7682fe47d7e07fa876334f21094e))
+
 ## [2.0.1](https://github.com/rudi23/koa-yup-router/compare/v2.0.0...v2.0.1) (2022-07-08)
 
 ### Miscellaneous Chores
