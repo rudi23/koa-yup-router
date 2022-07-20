@@ -1,6 +1,6 @@
 import { json } from 'co-body';
 import type Koa from 'koa';
-import type { JsonBodyOptions } from '../../types';
+import type { JsonBodyOptions } from '../../types/index.js';
 
 export default function createParseJsonBody(options: JsonBodyOptions = {}): Koa.Middleware {
     return async function parseJsonBody(ctx: Koa.Context): Promise<void> {

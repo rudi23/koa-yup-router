@@ -5,7 +5,7 @@ import type CoBody from 'co-body';
 import type * as Koa from 'koa';
 import type * as Yup from 'yup';
 import type * as KoaRouter from '@koa/router';
-import type YupRouter from '../index';
+import type YupRouter from '../index.js';
 
 // because we don not want koa-bodyparser/index.d.ts to set body?: any
 declare module 'koa' {

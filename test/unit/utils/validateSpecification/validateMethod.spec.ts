@@ -1,4 +1,4 @@
-import validateMethod from '@src/utils/validateSpecification/validateMethod';
+import validateMethod from '../../../../src/utils/validateSpecification/validateMethod.js';
 
 describe('utils/validateSpecification/validateMethod', () => {
     it('throws error when method is not defined', () => {

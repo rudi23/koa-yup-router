@@ -6,7 +6,7 @@ import type {
     Middleware,
     DefaultContext,
     DefaultState,
-} from '../../types';
+} from '../../types/index.js';
 
 export default function isHandlerSupportedFunction<
     ParamsT = DefaultParams,

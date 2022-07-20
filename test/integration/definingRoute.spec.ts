@@ -1,9 +1,9 @@
 import Koa from 'koa';
 import supertest from 'supertest';
 import type { TypeOf } from 'yup';
-import { paramsSchema, querySchema, bodySchema, headersSchema } from './schema';
-import YupRouter from '@src/index';
-import type { Middleware, RouterContext } from '@src/types';
+import type { Middleware, RouterContext } from '../../src/types/index.js';
+import YupRouter from '../../src/index.js';
+import { paramsSchema, querySchema, bodySchema, headersSchema } from './schema.js';
 
 type ParamsT = TypeOf<typeof paramsSchema>;
 type QueryT = TypeOf<typeof querySchema>;

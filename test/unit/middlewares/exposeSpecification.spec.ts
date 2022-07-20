@@ -1,6 +1,6 @@
 import type Koa from 'koa';
-import { valueOfType } from '../../utils';
-import createExposeSpecification from '@src/middlewares/exposeSpecification';
+import { valueOfType } from '../../utils.js';
+import createExposeSpecification from '../../../src/middlewares/exposeSpecification.js';
 
 const next = jest.fn();
 

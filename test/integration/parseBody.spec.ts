@@ -1,7 +1,7 @@
 import Koa from 'koa';
 import supertest from 'supertest';
-import { bodySchema } from './schema';
-import YupRouter from '@src/index';
+import YupRouter from '../../src/index.js';
+import { bodySchema } from './schema.js';
 
 let app = new Koa();
 let request = supertest(app.callback());

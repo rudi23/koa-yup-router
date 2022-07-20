@@ -1,9 +1,9 @@
-import validateHandler from '@src/utils/validateSpecification/validateHandler';
-import isHandlerSupportedFunction from '@src/utils/validateSpecification/isHandlerSupportedFunction';
-import validatePreHandler from '@src/utils/validateSpecification/validatePreHandler';
-import type { Middleware } from '@src/types';
+import validateHandler from '../../../../src/utils/validateSpecification/validateHandler.js';
+import isHandlerSupportedFunction from '../../../../src/utils/validateSpecification/isHandlerSupportedFunction.js';
+import validatePreHandler from '../../../../src/utils/validateSpecification/validatePreHandler.js';
+import type { Middleware } from '../../../../src/types/index.js';
 
-jest.mock('@src/utils/validateSpecification/isHandlerSupportedFunction');
+jest.mock('../../../../src/utils/validateSpecification/isHandlerSupportedFunction.js');
 
 const mockIsHandlerSupportedFunction = (isHandlerSupportedFunction as jest.Mock).mockImplementation(
     (arg: unknown) => arg

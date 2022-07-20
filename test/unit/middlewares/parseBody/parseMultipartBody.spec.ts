@@ -1,7 +1,9 @@
-import busboy from 'await-busboy';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import * as busboy from 'await-busboy';
 import type * as Koa from 'koa';
 import { valueOfType } from '../../../utils';
-import createParseMultipartBody from '@src/middlewares/parseBody/parseMultipartBody';
+import createParseMultipartBody from '../../../../src/middlewares/parseBody/parseMultipartBody';
 
 jest.mock('await-busboy');
 

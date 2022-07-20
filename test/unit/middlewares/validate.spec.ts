@@ -1,12 +1,12 @@
 import type { ObjectSchema } from 'yup';
 import type Koa from 'koa';
 import * as yup from 'yup';
-import { valueOfType } from '../../utils';
-import createValidate from '@src/middlewares/validate';
-import captureError from '@src/utils/captureError';
-import type { ValidateConfig } from '@src/types';
+import createValidate from '../../../src/middlewares/validate.js';
+import captureError from '../../../src/utils/captureError.js';
+import type { ValidateConfig } from '../../../src/types/index.js';
+import { valueOfType } from '../../utils.js';
 
-jest.mock('@src/utils/captureError');
+jest.mock('../../../src/utils/captureError.js');
 
 const mockCaptureError = (captureError as jest.Mock).mockImplementation(jest.fn());
 
@@ -29,7 +29,7 @@ const calledOptions = {
 };
 
 const mockInputParts = jest.fn().mockReturnValue(['headers', 'query', 'params', 'body']);
-jest.mock('@src/types/constants', () => ({
+jest.mock('../../../src/types/constants.js', () => ({
     get inputParts() {
         return mockInputParts();
     },

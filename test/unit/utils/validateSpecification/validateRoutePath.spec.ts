@@ -1,4 +1,4 @@
-import validateRoutePath from '@src/utils/validateSpecification/validateRoutePath';
+import validateRoutePath from '../../../../src/utils/validateSpecification/validateRoutePath.js';
 
 describe('utils/validateSpecification/validateRoutePath', () => {
     it('throws error when path is not string', () => {

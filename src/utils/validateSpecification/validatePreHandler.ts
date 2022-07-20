@@ -7,8 +7,8 @@ import type {
     RouteConfig,
     DefaultContext,
     DefaultState,
-} from '../../types';
-import isHandlerSupportedFunction from './isHandlerSupportedFunction';
+} from '../../types/index.js';
+import isHandlerSupportedFunction from './isHandlerSupportedFunction.js';
 
 export default function validatePreHandler<
     ParamsT = DefaultParams,

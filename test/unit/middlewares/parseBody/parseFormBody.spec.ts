@@ -1,7 +1,7 @@
 import type * as Koa from 'koa';
 import { form } from 'co-body';
 import { valueOfType } from '../../../utils';
-import createParseFormBody from '@src/middlewares/parseBody/parseFormBody';
+import createParseFormBody from '../../../../src/middlewares/parseBody/parseFormBody.js';
 
 jest.mock('co-body', () => ({
     form: jest.fn().mockImplementation(() => Promise.resolve('parsed body')),

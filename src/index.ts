@@ -1,11 +1,11 @@
 import delegate from 'delegates';
 import KoaRouter from '@koa/router';
 import type Koa from 'koa';
-import parseBody from './middlewares/parseBody';
-import exposeSpecification from './middlewares/exposeSpecification';
-import validate from './middlewares/validate';
-import errorHandler from './middlewares/errorHandler';
-import validateSpecification from './utils/validateSpecification';
+import parseBody from './middlewares/parseBody/index.js';
+import exposeSpecification from './middlewares/exposeSpecification.js';
+import validate from './middlewares/validate.js';
+import errorHandler from './middlewares/errorHandler.js';
+import validateSpecification from './utils/validateSpecification/index.js';
 import type {
     DefaultBody,
     DefaultHeaders,
@@ -17,8 +17,8 @@ import type {
     DefaultState,
     DefaultContext,
     Middleware,
-} from './types';
-import validatePreHandler from './utils/validateSpecification/validatePreHandler';
+} from './types/index.js';
+import validatePreHandler from './utils/validateSpecification/validatePreHandler.js';
 
 class YupRouter<StateRT = DefaultState, ContextRT = DefaultContext> extends KoaRouter {
     routeSpecs: RouteSpecification<any, any, any, any, any, any>[] = [];
@@ -95,6 +95,6 @@ class YupRouter<StateRT = DefaultState, ContextRT = DefaultContext> extends KoaR
     }
 }
 
-export * from './types';
-
 export default YupRouter;
+
+export { YupRouter };

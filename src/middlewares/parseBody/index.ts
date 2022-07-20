@@ -10,12 +10,12 @@ import type {
     InputType,
     RouteSpecification,
     ValidateConfig,
-} from '../../types';
-import captureError from '../../utils/captureError';
-import emptyMiddleware from '../emptyMiddleware';
-import parseFormBody from './parseFormBody';
-import parseMultipartBody from './parseMultipartBody';
-import parseJsonBody from './parseJsonBody';
+} from '../../types/index.js';
+import captureError from '../../utils/captureError.js';
+import emptyMiddleware from '../emptyMiddleware.js';
+import parseFormBody from './parseFormBody.js';
+import parseMultipartBody from './parseMultipartBody.js';
+import parseJsonBody from './parseJsonBody.js';
 
 function resolveBodyParser(type: InputType, validateSpec: ValidateConfig) {
     switch (type) {
