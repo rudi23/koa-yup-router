@@ -1,8 +1,8 @@
 import type Koa from 'koa';
 import type { ObjectSchema } from 'yup';
 import * as yup from 'yup';
-import captureError from '../utils/captureError';
-import { inputParts } from '../types/constants';
+import captureError from '../utils/captureError.js';
+import { inputParts } from '../types/constants.js';
 import type {
     DefaultBody,
     DefaultContext,
@@ -12,7 +12,7 @@ import type {
     DefaultState,
     RouteSpecification,
     ValidationType,
-} from '../types';
+} from '../types/index.js';
 
 function updateRequestWithCastedValues(ctx: Koa.Context, inputPart: ValidationType, validationResult: any) {
     switch (inputPart) {

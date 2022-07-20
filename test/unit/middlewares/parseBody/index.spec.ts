@@ -1,19 +1,19 @@
 import type * as Koa from 'koa';
 import * as yup from 'yup';
-import { valueOfType } from '../../../utils';
-import createParseBody from '@src/middlewares/parseBody';
-import parseJsonBody from '@src/middlewares/parseBody/parseJsonBody';
-import parseFormBody from '@src/middlewares/parseBody/parseFormBody';
-import parseMultipartBody from '@src/middlewares/parseBody/parseMultipartBody';
-import emptyMiddleware from '@src/middlewares/emptyMiddleware';
-import captureError from '@src/utils/captureError';
-import type { RouteSpecification } from '@src/types';
+import { valueOfType } from '../../../utils.js';
+import createParseBody from '../../../../src/middlewares/parseBody/index.js';
+import parseJsonBody from '../../../../src/middlewares/parseBody/parseJsonBody.js';
+import parseFormBody from '../../../../src/middlewares/parseBody/parseFormBody.js';
+import parseMultipartBody from '../../../../src/middlewares/parseBody/parseMultipartBody.js';
+import emptyMiddleware from '../../../../src/middlewares/emptyMiddleware.js';
+import captureError from '../../../../src/utils/captureError.js';
+import type { RouteSpecification } from '../../../../src/types/index.js';
 
-jest.mock('@src/middlewares/parseBody/parseJsonBody');
-jest.mock('@src/middlewares/parseBody/parseFormBody');
-jest.mock('@src/middlewares/parseBody/parseMultipartBody');
-jest.mock('@src/middlewares/emptyMiddleware');
-jest.mock('@src/utils/captureError');
+jest.mock('../../../../src/middlewares/parseBody/parseJsonBody.js');
+jest.mock('../../../../src/middlewares/parseBody/parseFormBody.js');
+jest.mock('../../../../src/middlewares/parseBody/parseMultipartBody.js');
+jest.mock('../../../../src/middlewares/emptyMiddleware.js');
+jest.mock('../../../../src/utils/captureError.js');
 
 const mockParseJsonBody = parseJsonBody as jest.Mock;
 const mockParseFormBody = parseFormBody as jest.Mock;

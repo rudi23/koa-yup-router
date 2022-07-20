@@ -8,7 +8,7 @@ import type {
     RouteSpecification,
     DefaultContext,
     DefaultState,
-} from '../types';
+} from '../types/index.js';
 
 export default function createExposeSpecification<
     ParamsT = DefaultParams,

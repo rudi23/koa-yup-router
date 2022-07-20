@@ -11,8 +11,11 @@
     "validation"
   ],
   "scripts": {
-    "typecheck": "tsc --noEmit",
-    "build": "tsc --build --verbose tsconfig.build.json",
+    "typecheck": "tsc --noEmit -p tsconfig.esm.json",
+    "build": "npm run build:esm && npm run build:cjs && npm run build:types",
+    "build:types": "tsc --build --verbose tsconfig.d.ts.json",
+    "build:esm": "tsc --build --verbose tsconfig.esm.json",
+    "build:cjs": "tsc --build --verbose tsconfig.cjs.json && echo '{\"type\":\"commonjs\"}' > ./cjs/package.json",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "test": "npm run test:unit && npm run test:integration",
@@ -38,13 +41,20 @@
   },
   "homepage": "https://github.com/rudi23/koa-yup-router",
   "files": [
-    "lib/**/*"
+    "esm/**/*",
+    "cjs/**/*",
+    "@type"
   ],
   "publishConfig": {
     "access": "public"
   },
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "exports": {
+    "require": "./cjs/index.js",
+    "import": "./esm/index.js"
+  },
+  "main": "./cjs/index.js",
+  "types": "./@type/index.d.ts",
+  "type": "module",
   "lint-staged": {
     "*.{js,ts}": "eslint --fix",
     "*.{json,md}": "prettier --write"

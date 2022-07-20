@@ -1,7 +1,7 @@
 import type Koa from 'koa';
 import { ValidationError } from 'yup';
-import { valueOfType } from '../../utils';
-import captureError from '@src/utils/captureError';
+import { valueOfType } from '../../utils.js';
+import captureError from '../../../src/utils/captureError.js';
 
 describe('utils/captureError', () => {
     it('capture error', async () => {

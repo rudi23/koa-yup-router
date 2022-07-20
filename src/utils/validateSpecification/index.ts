@@ -1,9 +1,9 @@
-import type { RouteConfig, RouteSpecification } from '../../types';
-import validateValidator from './validateValidator';
-import validateMethod from './validateMethod';
-import validateHandler from './validateHandler';
-import validatePreHandler from './validatePreHandler';
-import validateRoutePath from './validateRoutePath';
+import type { RouteConfig, RouteSpecification } from '../../types/index.js';
+import validateValidator from './validateValidator.js';
+import validateMethod from './validateMethod.js';
+import validateHandler from './validateHandler.js';
+import validatePreHandler from './validatePreHandler.js';
+import validateRoutePath from './validateRoutePath.js';
 
 export default function validateSpecification<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>(
     spec: RouteConfig<ParamsT, QueryT, BodyT, HeadersT, StateT, ContextT>

@@ -1,6 +1,6 @@
 import type Koa from 'koa';
-import type { ErrorType, ValidationErrorResponse, ValidationErrors } from '../types';
-import { isEmptyObject, isObject, filterObject } from '../utils/object';
+import type { ErrorType, ValidationErrorResponse, ValidationErrors } from '../types/index.js';
+import { isEmptyObject, isObject, filterObject } from '../utils/object.js';
 
 const errorTypes: ErrorType[] = ['params', 'query', 'headers', 'body', 'type'];
 

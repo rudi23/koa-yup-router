@@ -1,5 +1,5 @@
-import isHandlerSupportedFunction from '@src/utils/validateSpecification/isHandlerSupportedFunction';
-import type { Middleware } from '@src/types';
+import isHandlerSupportedFunction from '../../../../src/utils/validateSpecification/isHandlerSupportedFunction.js';
+import type { Middleware } from '../../../../src/types/index.js';
 
 describe('utils/validateSpecification/isHandlerSupportedFunction', () => {
     it('throws error when handler is not defined', () => {

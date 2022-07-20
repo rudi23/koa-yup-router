@@ -1,17 +1,17 @@
 import { valueOfType } from '../../../utils';
-import validateSpecification from '@src/utils/validateSpecification';
-import type { RouteConfig } from '@src/types';
-import validateHandler from '@src/utils/validateSpecification/validateHandler';
-import validatePreHandler from '@src/utils/validateSpecification/validatePreHandler';
-import validateMethod from '@src/utils/validateSpecification/validateMethod';
-import validateRoutePath from '@src/utils/validateSpecification/validateRoutePath';
-import validateValidator from '@src/utils/validateSpecification/validateValidator';
+import validateSpecification from '../../../../src/utils/validateSpecification/index.js';
+import type { RouteConfig } from '../../../../src/types/index.js';
+import validateHandler from '../../../../src/utils/validateSpecification/validateHandler.js';
+import validatePreHandler from '../../../../src/utils/validateSpecification/validatePreHandler.js';
+import validateMethod from '../../../../src/utils/validateSpecification/validateMethod.js';
+import validateRoutePath from '../../../../src/utils/validateSpecification/validateRoutePath.js';
+import validateValidator from '../../../../src/utils/validateSpecification/validateValidator.js';
 
-jest.mock('@src/utils/validateSpecification/validateHandler');
-jest.mock('@src/utils/validateSpecification/validatePreHandler');
-jest.mock('@src/utils/validateSpecification/validateMethod');
-jest.mock('@src/utils/validateSpecification/validateRoutePath');
-jest.mock('@src/utils/validateSpecification/validateValidator');
+jest.mock('../../../../src/utils/validateSpecification/validateHandler.js');
+jest.mock('../../../../src/utils/validateSpecification/validatePreHandler.js');
+jest.mock('../../../../src/utils/validateSpecification/validateMethod.js');
+jest.mock('../../../../src/utils/validateSpecification/validateRoutePath.js');
+jest.mock('../../../../src/utils/validateSpecification/validateValidator.js');
 
 const mockValidateHandler = (validateHandler as jest.Mock).mockImplementation((arg: unknown) => [arg]);
 const mockValidatePreHandler = (validatePreHandler as jest.Mock).mockImplementation((arg: unknown) => [arg]);

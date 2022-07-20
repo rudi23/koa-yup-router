@@ -1,7 +1,7 @@
 import type * as Koa from 'koa';
 import { json } from 'co-body';
 import { valueOfType } from '../../../utils';
-import createParseJsonBody from '@src/middlewares/parseBody/parseJsonBody';
+import createParseJsonBody from '../../../../src/middlewares/parseBody/parseJsonBody.js';
 
 jest.mock('co-body', () => ({
     json: jest.fn().mockImplementation(() => Promise.resolve({ res: 'parsed body' })),

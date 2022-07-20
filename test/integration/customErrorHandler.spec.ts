@@ -1,8 +1,8 @@
 import Koa from 'koa';
 import supertest from 'supertest';
-import { paramsSchema, querySchema, bodySchema, headersSchema } from './schema';
-import YupRouter from '@src/index';
-import type { ValidationErrors } from '@src/types';
+import YupRouter from '../../src/index.js';
+import type { ValidationErrors } from '../../src/types/index.js';
+import { paramsSchema, querySchema, bodySchema, headersSchema } from './schema.js';
 
 const app = new Koa();
 const request = supertest(app.callback());

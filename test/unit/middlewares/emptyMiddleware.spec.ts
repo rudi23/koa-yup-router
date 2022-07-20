@@ -1,6 +1,6 @@
 import type Koa from 'koa';
-import { valueOfType } from '../../utils';
-import emptyMiddleware from '@src/middlewares/emptyMiddleware';
+import { valueOfType } from '../../utils.js';
+import emptyMiddleware from '../../../src/middlewares/emptyMiddleware.js';
 
 const next = jest.fn();
 

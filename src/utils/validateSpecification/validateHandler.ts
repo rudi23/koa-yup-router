@@ -7,8 +7,8 @@ import type {
     DefaultState,
     Middleware,
     RouteConfig,
-} from '../../types';
-import isHandlerSupportedFunction from './isHandlerSupportedFunction';
+} from '../../types/index.js';
+import isHandlerSupportedFunction from './isHandlerSupportedFunction.js';
 
 export default function validateHandler<
     ParamsT = DefaultParams,

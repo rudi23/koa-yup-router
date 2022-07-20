@@ -1,7 +1,7 @@
 import type Koa from 'koa';
 import { ValidationError } from 'yup';
-import { valueOfType } from '../../utils';
-import errorHandler from '@src/middlewares/errorHandler';
+import { valueOfType } from '../../utils.js';
+import errorHandler from '../../../src/middlewares/errorHandler.js';
 
 const next = jest.fn();
 
