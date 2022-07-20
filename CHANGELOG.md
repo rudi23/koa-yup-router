@@ -1,3 +1,9 @@
+## [2.2.0](https://github.com/rudi23/koa-yup-router/compare/v2.1.1...v2.2.0) (2022-07-20)
+
+### Features
+
+-   allow output property in validation config ([72907a4](https://github.com/rudi23/koa-yup-router/commit/72907a490ae4b16fab235ec11e79809486bb4fb7))
+
 ## [2.1.1](https://github.com/rudi23/koa-yup-router/compare/v2.1.0...v2.1.1) (2022-07-20)
 
 ### Bug Fixes
