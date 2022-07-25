@@ -1,3 +1,13 @@
+## [2.2.1](https://github.com/rudi23/koa-yup-router/compare/v2.2.0...v2.2.1) (2022-07-25)
+
+### Bug Fixes
+
+-   fix problem when ctx.request.body is undefined ([d946ecc](https://github.com/rudi23/koa-yup-router/commit/d946eccef5073089f8d50919aa54015ebe26e75c))
+
+### Continuous Integration
+
+-   fix build ([c506ac5](https://github.com/rudi23/koa-yup-router/commit/c506ac55974b5bebb2c9596cd542eed78185056f))
+
 ## [2.2.0](https://github.com/rudi23/koa-yup-router/compare/v2.1.1...v2.2.0) (2022-07-20)
 
 ### Features
