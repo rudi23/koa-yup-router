@@ -30,6 +30,9 @@ function updateRequestWithCastedValues(ctx: Koa.Context, inputPart: ValidationTy
             });
             break;
         case 'body':
+            if (ctx.request.body === undefined) {
+                ctx.request.body = {};
+            }
             // setting ctx.request.body directly causes casting back to strings
             Object.keys(validationResult).forEach((key) => {
                 (ctx.request.body as any)[key] = validationResult[key];
