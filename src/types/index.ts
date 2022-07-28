@@ -127,7 +127,10 @@ export type RouterParamContext<
     ContextT = DefaultContext
 > = {
     params: ParamsT;
-    request: Koa.Request & { query: QueryT; body: BodyT; header: HeadersT; headers: HeadersT };
+    query: QueryT;
+    header: QueryT;
+    headers: QueryT;
+    request: Koa.Request & { params: ParamsT; query: QueryT; body: BodyT; header: HeadersT; headers: HeadersT };
     router: YupRouter<StateT, ContextT>;
     _matchedRoute: string | RegExp | undefined;
     _matchedRouteName: string | undefined;

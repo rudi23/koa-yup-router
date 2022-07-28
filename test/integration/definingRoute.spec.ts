@@ -29,9 +29,14 @@ const expectValidEndpointRequest = async (
         .expect('Content-Type', /json/)
         .expect(200)
         .then((response) => {
-            expect(response.body.id).toBe(1);
-            expect(response.body.search).toBe('foo');
-            expect(response.body.custom).toBe('value');
+            expect(response.body.id1).toBe(1);
+            expect(response.body.id2).toBe(1);
+            expect(response.body.search1).toBe('foo');
+            expect(response.body.search2).toBe('foo');
+            expect(response.body.custom1).toBe('value');
+            expect(response.body.custom2).toBe('value');
+            expect(response.body.custom3).toBe('value');
+            expect(response.body.custom4).toBe('value');
             expect(response.body.string).toBe('string');
             expect(response.body.body).toEqual({
                 string: 'string',
@@ -92,11 +97,16 @@ describe('defining route', () => {
 
         const handler = (ctx: RouterContext<ParamsT, QueryT, BodyT, HeadersT>) => {
             ctx.body = {
-                id: ctx.params.id,
-                search: ctx.request.query.search,
+                id1: ctx.request.params.id,
+                id2: ctx.params.id,
+                search1: ctx.request.query.search,
+                search2: ctx.query.search,
                 string: ctx.request.body.string,
                 body: ctx.request.body,
-                custom: ctx.request.headers.custom,
+                custom1: ctx.request.headers.custom,
+                custom2: ctx.headers.custom,
+                custom3: ctx.request.header.custom,
+                custom4: ctx.header.custom,
             };
         };
 
@@ -142,11 +152,16 @@ describe('defining route', () => {
                 koaMiddleware,
                 (ctx) => {
                     ctx.body = {
-                        id: ctx.params.id,
-                        search: ctx.request.query.search,
+                        id1: ctx.request.params.id,
+                        id2: ctx.params.id,
+                        search1: ctx.request.query.search,
+                        search2: ctx.query.search,
                         string: ctx.request.body.string,
                         body: ctx.request.body,
-                        custom: ctx.request.headers.custom,
+                        custom1: ctx.request.headers.custom,
+                        custom2: ctx.headers.custom,
+                        custom3: ctx.request.header.custom,
+                        custom4: ctx.header.custom,
                     };
                 },
             ],
@@ -173,11 +188,16 @@ describe('defining route', () => {
             },
             handler: (ctx) => {
                 ctx.body = {
-                    id: ctx.params.id,
-                    search: ctx.request.query.search,
+                    id1: ctx.request.params.id,
+                    id2: ctx.params.id,
+                    search1: ctx.request.query.search,
+                    search2: ctx.query.search,
                     string: ctx.request.body.string,
                     body: ctx.request.body,
-                    custom: ctx.request.headers.custom,
+                    custom1: ctx.request.headers.custom,
+                    custom2: ctx.headers.custom,
+                    custom3: ctx.request.header.custom,
+                    custom4: ctx.header.custom,
                 };
             },
         });
@@ -203,11 +223,16 @@ describe('defining route', () => {
             },
             handler: (ctx) => {
                 ctx.body = {
-                    id: ctx.params.id,
-                    search: ctx.request.query.search,
+                    id1: ctx.request.params.id,
+                    id2: ctx.params.id,
+                    search1: ctx.request.query.search,
+                    search2: ctx.query.search,
                     string: ctx.request.body.string,
                     body: ctx.request.body,
-                    custom: ctx.request.headers.custom,
+                    custom1: ctx.request.headers.custom,
+                    custom2: ctx.headers.custom,
+                    custom3: ctx.request.header.custom,
+                    custom4: ctx.header.custom,
                 };
             },
         });
