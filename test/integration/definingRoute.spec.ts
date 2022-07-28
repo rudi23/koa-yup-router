@@ -61,11 +61,16 @@ describe('defining route', () => {
 
         const handler: Middleware<ParamsT, QueryT, BodyT, HeadersT> = (ctx) => {
             ctx.body = {
-                id: ctx.params.id,
-                search: ctx.request.query.search,
+                id1: ctx.request.params.id,
+                id2: ctx.params.id,
+                search1: ctx.request.query.search,
+                search2: ctx.query.search,
                 string: ctx.request.body.string,
                 body: ctx.request.body,
-                custom: ctx.request.headers.custom,
+                custom1: ctx.request.headers.custom,
+                custom2: ctx.headers.custom,
+                custom3: ctx.request.header.custom,
+                custom4: ctx.header.custom,
             };
         };
 
