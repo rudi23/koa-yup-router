@@ -1,3 +1,16 @@
+## [2.2.3](https://github.com/rudi23/koa-yup-router/compare/v2.2.2...v2.2.3) (2022-07-28)
+
+### Bug Fixes
+
+-   add types for ctx.query, ctx.header, ctx.headers, ctx.request.params ([8b0b47a](https://github.com/rudi23/koa-yup-router/commit/8b0b47a5f27fee71b6b87abbd3acd835cb4b86c9))
+-   fix test ([d275454](https://github.com/rudi23/koa-yup-router/commit/d275454492a19e760d996b568f008f566180cab5))
+-   move [@types](https://github.com/types) packages to devDependencies ([#32](https://github.com/rudi23/koa-yup-router/issues/32)) ([6a22485](https://github.com/rudi23/koa-yup-router/commit/6a2248590e0e05119ebee5ee817be77aca2ef6a1))
+
+### Miscellaneous Chores
+
+-   **deps:** update dependency release-it to v15.2.0 ([#31](https://github.com/rudi23/koa-yup-router/issues/31)) ([9f061f4](https://github.com/rudi23/koa-yup-router/commit/9f061f48dca30e7d8868f22ca2a3222ce7fda4af))
+-   **deps:** update linters to v5.31.0 ([#30](https://github.com/rudi23/koa-yup-router/issues/30)) ([ff42699](https://github.com/rudi23/koa-yup-router/commit/ff42699e19e880df964f7b9c5be71f820b86bc54))
+
 ## [2.2.2](https://github.com/rudi23/koa-yup-router/compare/v2.2.1...v2.2.2) (2022-07-25)
 
 ### Miscellaneous Chores
