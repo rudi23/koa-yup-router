@@ -68,9 +68,9 @@
     "yup": "0.32.11"
   },
   "devDependencies": {
-    "@commitlint/cli": "17.0.3",
-    "@commitlint/config-conventional": "17.0.3",
-    "@release-it/conventional-changelog": "5.0.0",
+    "@commitlint/cli": "17.1.2",
+    "@commitlint/config-conventional": "17.1.0",
+    "@release-it/conventional-changelog": "5.1.0",
     "@types/busboy": "1.5.0",
     "@types/clone": "2.1.1",
     "@types/co-body": "6.1.0",
@@ -92,7 +92,7 @@
     "koa": "2.13.4",
     "lint-staged": "13.0.3",
     "prettier": "2.7.1",
-    "release-it": "15.2.0",
+    "release-it": "15.4.1",
     "supertest": "6.2.4",
     "ts-jest": "28.0.8",
     "ts-node": "10.9.1",
