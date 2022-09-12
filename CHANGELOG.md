@@ -1,3 +1,37 @@
+## [2.2.4](https://github.com/rudi23/koa-yup-router/compare/v2.2.3...v2.2.4) (2022-09-12)
+
+### Miscellaneous Chores
+
+-   **deps:** update dependency @types/jest to v28.1.7 ([#45](https://github.com/rudi23/koa-yup-router/issues/45)) ([3ec7d79](https://github.com/rudi23/koa-yup-router/commit/3ec7d79408bdf7121dce8b5fb70d3f87d8e22b19))
+-   **deps:** update dependency @types/jest to v28.1.8 ([#52](https://github.com/rudi23/koa-yup-router/issues/52)) ([43b96ea](https://github.com/rudi23/koa-yup-router/commit/43b96ea6c6c85701f0b6a8d74836312f2e4d7382))
+-   **deps:** update dependency @types/koa\_\_router to v12 ([#62](https://github.com/rudi23/koa-yup-router/issues/62)) ([2906e14](https://github.com/rudi23/koa-yup-router/commit/2906e1471346696ebeb71b14d8a23091a6c3987c))
+-   **deps:** update dependency eslint to v8.21.0 ([#34](https://github.com/rudi23/koa-yup-router/issues/34)) ([d3e3506](https://github.com/rudi23/koa-yup-router/commit/d3e3506d1c6bb61c49c763c000f6297021c4abae))
+-   **deps:** update dependency eslint to v8.22.0 ([#42](https://github.com/rudi23/koa-yup-router/issues/42)) ([3367deb](https://github.com/rudi23/koa-yup-router/commit/3367deb6b730a5c5d63579bbb1ae187c4e91e82a))
+-   **deps:** update dependency eslint to v8.23.0 ([#56](https://github.com/rudi23/koa-yup-router/issues/56)) ([e3ebf21](https://github.com/rudi23/koa-yup-router/commit/e3ebf21cc79f25c052a8d292732e8fec78611875))
+-   **deps:** update dependency eslint-import-resolver-typescript to v3.4.1 ([#41](https://github.com/rudi23/koa-yup-router/issues/41)) ([3b670c0](https://github.com/rudi23/koa-yup-router/commit/3b670c0589e0190c90206743da8e77d935b9946d))
+-   **deps:** update dependency eslint-import-resolver-typescript to v3.4.2 ([#47](https://github.com/rudi23/koa-yup-router/issues/47)) ([76bb691](https://github.com/rudi23/koa-yup-router/commit/76bb69180f4ad0aba9bf48abe3e0e09443c04ca5))
+-   **deps:** update dependency eslint-plugin-jest to v26.7.0 ([#33](https://github.com/rudi23/koa-yup-router/issues/33)) ([d368fa6](https://github.com/rudi23/koa-yup-router/commit/d368fa6ff180199de78d207ff870609113d56370))
+-   **deps:** update dependency eslint-plugin-jest to v26.8.0 ([#36](https://github.com/rudi23/koa-yup-router/issues/36)) ([9ec610c](https://github.com/rudi23/koa-yup-router/commit/9ec610cbc6ee7dc4c98b7cdbe857a2434c75ce14))
+-   **deps:** update dependency eslint-plugin-jest to v26.8.2 ([#38](https://github.com/rudi23/koa-yup-router/issues/38)) ([a5f7ba0](https://github.com/rudi23/koa-yup-router/commit/a5f7ba01b4ac958e847ea64151f89eaa2504173c))
+-   **deps:** update dependency eslint-plugin-jest to v26.8.3 ([#43](https://github.com/rudi23/koa-yup-router/issues/43)) ([271ff22](https://github.com/rudi23/koa-yup-router/commit/271ff2202ac4d623ec50f500eba6e34dea3ebbf1))
+-   **deps:** update dependency eslint-plugin-jest to v26.8.4 ([#48](https://github.com/rudi23/koa-yup-router/issues/48)) ([d614eba](https://github.com/rudi23/koa-yup-router/commit/d614ebae4bd8842e7d2067b99de6473427ab3bf6))
+-   **deps:** update dependency eslint-plugin-jest to v26.8.5 ([#49](https://github.com/rudi23/koa-yup-router/issues/49)) ([9aa9e3c](https://github.com/rudi23/koa-yup-router/commit/9aa9e3cbef59a124f7b9d40dc3de11d8a6c36a4b))
+-   **deps:** update dependency eslint-plugin-jest to v26.8.7 ([#50](https://github.com/rudi23/koa-yup-router/issues/50)) ([54c3029](https://github.com/rudi23/koa-yup-router/commit/54c3029cde977b48eb831970170bef0e3288c772))
+-   **deps:** update dependency eslint-plugin-jest to v26.9.0 ([#57](https://github.com/rudi23/koa-yup-router/issues/57)) ([50383f6](https://github.com/rudi23/koa-yup-router/commit/50383f65c570b934ecd2cff50b2b0fdea66f715c))
+-   **deps:** update dependency eslint-plugin-jest to v27 ([#58](https://github.com/rudi23/koa-yup-router/issues/58)) ([685aeb4](https://github.com/rudi23/koa-yup-router/commit/685aeb4d2f61eba33ef898eaf32cb74f110ccdeb))
+-   **deps:** update dependency ts-jest to v28.0.8 ([#44](https://github.com/rudi23/koa-yup-router/issues/44)) ([92caaa6](https://github.com/rudi23/koa-yup-router/commit/92caaa6790226299bb8a3e9019a8df74102d3b5d))
+-   **deps:** update dependency typescript to v4.8.2 ([#55](https://github.com/rudi23/koa-yup-router/issues/55)) ([9252332](https://github.com/rudi23/koa-yup-router/commit/92523320003fa6332f1913629d7944f78521acea))
+-   **deps:** update dependency typescript to v4.8.3 ([#63](https://github.com/rudi23/koa-yup-router/issues/63)) ([a7d46ed](https://github.com/rudi23/koa-yup-router/commit/a7d46eda2ef793f8a02c9a2a58064cb49eb1840d))
+-   **deps:** update linters ([#35](https://github.com/rudi23/koa-yup-router/issues/35)) ([b66ef5e](https://github.com/rudi23/koa-yup-router/commit/b66ef5e4da35d5ffdc29641b3b4a8a52f60ab181))
+-   **deps:** update linters ([#37](https://github.com/rudi23/koa-yup-router/issues/37)) ([3bdaf9e](https://github.com/rudi23/koa-yup-router/commit/3bdaf9efb25467dee9ce18da77027c33b030244d))
+-   **deps:** update linters ([#51](https://github.com/rudi23/koa-yup-router/issues/51)) ([3184b22](https://github.com/rudi23/koa-yup-router/commit/3184b229df3b8e8956f46ab62d36339d77642bac))
+-   **deps:** update linters to v5.33.1 ([#46](https://github.com/rudi23/koa-yup-router/issues/46)) ([b3197a4](https://github.com/rudi23/koa-yup-router/commit/b3197a4a1be856b3b0630d27dd035addeb1e835e))
+-   **deps:** update linters to v5.35.1 ([#53](https://github.com/rudi23/koa-yup-router/issues/53)) ([8c348d1](https://github.com/rudi23/koa-yup-router/commit/8c348d1876e056f762e4001a9aa3b0be4b511034))
+-   **deps:** update linters to v5.36.0 ([#59](https://github.com/rudi23/koa-yup-router/issues/59)) ([83d7111](https://github.com/rudi23/koa-yup-router/commit/83d7111d45d5ea289a317a43f704b7aa6de15aa9))
+-   **deps:** update linters to v5.36.1 ([#60](https://github.com/rudi23/koa-yup-router/issues/60)) ([ffbdb93](https://github.com/rudi23/koa-yup-router/commit/ffbdb930e349af14bc9d536c86c76fb2a5b1b7ef))
+-   **deps:** update linters to v5.36.2 ([#61](https://github.com/rudi23/koa-yup-router/issues/61)) ([033bf7e](https://github.com/rudi23/koa-yup-router/commit/033bf7e6bb0db7d8ad49d453b74af624aab7deae))
+-   **deps:** update release-related tools ([#40](https://github.com/rudi23/koa-yup-router/issues/40)) ([dcfa522](https://github.com/rudi23/koa-yup-router/commit/dcfa5225be95bc3c9891a8630513ce73c7eb9be0))
+
 ## [2.2.3](https://github.com/rudi23/koa-yup-router/compare/v2.2.2...v2.2.3) (2022-07-28)
 
 ### Bug Fixes
