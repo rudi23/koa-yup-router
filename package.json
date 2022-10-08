@@ -70,7 +70,7 @@
   "devDependencies": {
     "@commitlint/cli": "17.1.2",
     "@commitlint/config-conventional": "17.1.0",
-    "@release-it/conventional-changelog": "5.1.0",
+    "@release-it/conventional-changelog": "5.1.1",
     "@types/busboy": "1.5.0",
     "@types/clone": "2.1.1",
     "@types/co-body": "6.1.0",
