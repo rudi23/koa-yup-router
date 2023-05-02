@@ -92,7 +92,7 @@
     "koa": "2.14.2",
     "lint-staged": "13.2.2",
     "prettier": "2.8.8",
-    "release-it": "15.10.2",
+    "release-it": "15.10.3",
     "supertest": "6.3.3",
     "ts-jest": "28.0.8",
     "ts-node": "10.9.1",
