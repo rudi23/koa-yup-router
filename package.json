@@ -65,7 +65,7 @@
     "clone": "2.1.2",
     "co-body": "6.1.0",
     "delegates": "1.0.0",
-    "yup": "0.32.11"
+    "yup": "1.2.0"
   },
   "devDependencies": {
     "@commitlint/cli": "17.6.6",
