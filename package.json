@@ -76,7 +76,7 @@
     "@types/co-body": "6.1.2",
     "@types/jest": "28.1.8",
     "@types/koa": "2.13.10",
-    "@types/koa__router": "12.0.2",
+    "@types/koa__router": "12.0.3",
     "@types/supertest": "2.0.15",
     "@typescript-eslint/eslint-plugin": "5.62.0",
     "@typescript-eslint/parser": "5.62.0",
