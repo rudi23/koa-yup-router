@@ -68,8 +68,8 @@
     "yup": "1.4.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "17.7.1",
-    "@commitlint/config-conventional": "17.7.0",
+    "@commitlint/cli": "17.8.1",
+    "@commitlint/config-conventional": "17.8.1",
     "@release-it/conventional-changelog": "5.1.1",
     "@types/busboy": "1.5.3",
     "@types/clone": "2.1.4",
